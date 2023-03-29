@@ -1,20 +1,20 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
     <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.1/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
     <a-scene
-      mindar-image="imageTargetSrc: VJMonolith/webar/targets.mind;"
+      mindar-image="imageTargetSrc: targets.mind;"
       color-space="sRGB"
       renderer="colorManagement: true, physicallyCorrectLights"
       vr-mode-ui="enabled: false"
       device-orientation-permission-ui="enabled: false"
     >
       <a-assets>
-        <img id="card" src="VJMonolith/webar/marker.png" />
+        <img id="card" src="marker.png" />
         <a-asset-item id="avatarModel" src="exit/scene.gltf"></a-asset-item>
       </a-assets>
 
