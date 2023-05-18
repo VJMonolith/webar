@@ -38,47 +38,48 @@
 
       //Top up Two
       var menuStatus = false;
+      var logo = false;
 
-      const showPortfolio = (onDone) => {
-        //const portfolio = document.querySelector("#portfolio-panel");
-        const callButton = document.querySelector("#call-button");
-        const emailButton = document.querySelector("#email-button");
-        const linkedinButton = document.querySelector("#linkedin-button");
-        const profilename = document.querySelector("#username");
-        const designationname = document.querySelector("#designation");
+      // const showPortfolio = (onDone) => {
+      //   //const portfolio = document.querySelector("#portfolio-panel");
+      //   const callButton = document.querySelector("#call-button");
+      //   const emailButton = document.querySelector("#email-button");
+      //   const linkedinButton = document.querySelector("#linkedin-button");
+      //   const profilename = document.querySelector("#username");
+      //   const designationname = document.querySelector("#designation");
 
-        var name = "Jagadeesh Vinayagam";
-        var designation = "XR Developer";
-        var phone = "tel:+918939427788";
-        var email = "mailto:jvinayagam@monolith.asia&body=Hello Jagadeesh";
-        var linkedin = "www.linkedin.com/in/jagadeesh-v-364b4a16b";
+      //   var name = "Jagadeesh Vinayagam";
+      //   var designation = "XR Developer";
+      //   var phone = "tel:+918939427788";
+      //   var email = "mailto:jvinayagam@monolith.asia&body=Hello Jagadeesh";
+      //   var linkedin = "www.linkedin.com/in/jagadeesh-v-364b4a16b";
 
-        profilename.setAttribute("value", name);
-        designationname.setAttribute("value", designation);
+      //   profilename.setAttribute("value", name);
+      //   designationname.setAttribute("value", designation);
 
-        callButton.addEventListener("click", function (evt) {
-          window.location.href = phone;
-        });
+      //   callButton.addEventListener("click", function (evt) {
+      //     window.location.href = phone;
+      //   });
 
-        emailButton.addEventListener("click", function (evt) {
-          window.location.href = email;
-        });
+      //   emailButton.addEventListener("click", function (evt) {
+      //     window.location.href = email;
+      //   });
 
-        linkedinButton.addEventListener("click", function (evt) {
-          window.location.href = linkedin;
-        });
+      //   linkedinButton.addEventListener("click", function (evt) {
+      //     window.location.href = linkedin;
+      //   });
 
-        let y = 0;
-        //portfolio.setAttribute("visible", true);
-        const id = setInterval(() => {
-          y += 0.008;
-          if (y >= 0.6) {
-            clearInterval(id);
-            onDone();
-          }
-          portfolio.setAttribute("position", "0 " + y + " -0.05");
-        }, 10);
-      };
+      //   let y = 0;
+      //   //portfolio.setAttribute("visible", true);
+      //   const id = setInterval(() => {
+      //     y += 0.008;
+      //     if (y >= 0.6) {
+      //       clearInterval(id);
+      //       onDone();
+      //     }
+      //     portfolio.setAttribute("position", "0 " + y + " -0.05");
+      //   }, 10);
+      // };
 
       const showAvatar = (onDone) => {
         const avatar = document.querySelector("#avatar");
@@ -89,12 +90,15 @@
             clearInterval(id);
             onDone();
           }
+          if(z==0.1){
+            logo = true;
+          }
           avatar.setAttribute("position", "0  -0.07 " + z);
         }, 10);
       };
 
       const showMenu = (onDone) => {
-        const menuButton = document.querySelector("#menu-button");
+        const ganeshButton = document.querySelector("#ganesh-button");
         const leftButton = document.querySelector("#portfolio-left-button");
         const rightButton = document.querySelector("#portfolio-right-button");
 
@@ -117,18 +121,18 @@
           console.log(currentItem);
         });
 
-        menuButton.addEventListener("click", function (evt) {
+        ganeshButton.addEventListener("click", function (evt) {
           menuStatus = true;
-          document
-            .getElementById("portfolio-panels-bottom-one")
-            .setAttribute("animation__up", "enabled:true");
+          // document
+          //   .getElementById("portfolio-panels-bottom-one")
+          //   .setAttribute("animation__up", "enabled:true");
           document
             .getElementById("portfolio-panels-top-one")
             .setAttribute("animation__down", "enabled:true");
           setTimeout(() => {
-            document
-              .getElementById("portfolio-panels-bottom-one")
-              .setAttribute("visible", "false");
+            // document
+            //   .getElementById("portfolio-panels-bottom-one")
+            //   .setAttribute("visible", "false");
             document
               .getElementById("portfolio-panels-top-one")
               .setAttribute("visible", "false");
@@ -140,26 +144,12 @@
               document
                 .getElementById("portfolio-panels-top-two")
                 .setAttribute("animation__up", "enabled:true");
-              document
-                .getElementById("portfolio-panels-bottom-two")
-                .setAttribute("visible", "true");
-              document
-                .getElementById("portfolio-panels-bottom-two")
-                .setAttribute("animation__down", "enabled:true");
-              setTimeout(() => {
-                document
-                  .getElementById("portfolio-left-button")
-                  .setAttribute("visible", "true");
-                document
-                  .getElementById("portfolio-left-button")
-                  .setAttribute("animation__left", "enabled:true");
-                document
-                  .getElementById("portfolio-right-button")
-                  .setAttribute("visible", "true");
-                document
-                  .getElementById("portfolio-right-button")
-                  .setAttribute("animation__right", "enabled:true");
-              }, 1000);
+              // document
+              //   .getElementById("portfolio-panels-bottom-two")
+              //   .setAttribute("visible", "true");
+              // document
+              //   .getElementById("portfolio-panels-bottom-two")
+              //   .setAttribute("animation__down", "enabled:true");
             }
           }, 2000);
         });
@@ -173,6 +163,7 @@
         const linkedinButton = document.querySelector("#linkedin-button");
         const profilename = document.querySelector("#username");
         const designationname = document.querySelector("#designation");
+
 
         var firstname = "Jagadeesh";
         var fullname = "Jagadeesh Vinayagam";
@@ -198,7 +189,6 @@
             "https://www.linkedin.com/in/" + linkedin + "/";
         });
 
-        if (menuStatus === false) {
           document
             .getElementById("portfolio-panels-top-one")
             .setAttribute("visible", "true");
@@ -207,31 +197,45 @@
             .setAttribute("animation__up", "enabled:true");
 
           document
-            .getElementById("portfolio-panels-bottom-one")
+            .getElementById("portfolio-panels-bottom-two")
             .setAttribute("visible", "true");
           document
-            .getElementById("portfolio-panels-bottom-one")
+            .getElementById("portfolio-panels-bottom-two")
             .setAttribute("animation__down", "enabled:true");
+
+            setTimeout(() => {
+                document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("animation__left", "enabled:true");
+                document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("animation__right", "enabled:true");
+              }, 1000);
           showMenu();
-        }
         onDone();
       };
 
       const targetLost = (onDone) => {
         if (menuStatus === false) {
-          //bottom one reset
-          document
-            .getElementById("portfolio-panels-bottom-one")
-            .setAttribute("position", "0 0 -0.05");
-          document
-            .getElementById("portfolio-panels-bottom-one")
-            .setAttribute("visible", "false");
-          document
-            .getElementById("portfolio-panels-bottom-one")
-            .setAttribute("animation__down", "enabled:false");
-          document
-            .getElementById("portfolio-panels-bottom-one")
-            .setAttribute("animation__up", "enabled:false");
+          // //bottom one reset
+          // document
+          //   .getElementById("portfolio-panels-bottom-one")
+          //   .setAttribute("position", "0 0 -0.05");
+          // document
+          //   .getElementById("portfolio-panels-bottom-one")
+          //   .setAttribute("visible", "false");
+          // document
+          //   .getElementById("portfolio-panels-bottom-one")
+          //   .setAttribute("animation__down", "enabled:false");
+          // document
+          //   .getElementById("portfolio-panels-bottom-one")
+          //   .setAttribute("animation__up", "enabled:false");
 
           //bottom two reset document
           document
@@ -366,24 +370,24 @@
               .setAttribute("animation__up", "enabled:false");
 
             //left and right arrow
-            document
-              .getElementById("portfolio-left-button")
-              .setAttribute("position", "-0.3 0 -0.05");
-            document
-              .getElementById("portfolio-left-button")
-              .setAttribute("visible", "false");
-            document
-              .getElementById("portfolio-left-button")
-              .setAttribute("animation__left", "enabled:false");
-            document
-              .getElementById("portfolio-right-button")
-              .setAttribute("position", "0.3 0 0.05");
-            document
-              .getElementById("portfolio-right-button")
-              .setAttribute("visible", "false");
-            document
-              .getElementById("portfolio-right-button")
-              .setAttribute("animation__right", "enabled:false");
+          document
+            .getElementById("portfolio-left-button")
+            .setAttribute("position", "-0.3 0 -0.05");
+          document
+            .getElementById("portfolio-left-button")
+            .setAttribute("visible", "false");
+          document
+            .getElementById("portfolio-left-button")
+            .setAttribute("animation__left", "enabled:false");
+          document
+            .getElementById("portfolio-right-button")
+            .setAttribute("position", "0.3 0 0.05");
+          document
+            .getElementById("portfolio-right-button")
+            .setAttribute("visible", "false");
+          document
+            .getElementById("portfolio-right-button")
+            .setAttribute("animation__right", "enabled:false");
 
             //profile list
             document
@@ -533,6 +537,10 @@
         <img id="comic-icon" src="pic/comic.png" />
         <img id="vr-icon" src="pic/vr.png" />
         <img id="top-icon" src="pic/top.png" />
+        <img id="mot-icon" src="pic/mot.png" />
+        <img id="ganesh-icon" src="pic/ganesh.png" />
+        <img id="arrow-icon" src="pic/arrow.png" />
+        <img id="layout-icon" src="pic/layout.png" />
       </asset>
 
       <a-camera
@@ -572,14 +580,15 @@
           to:0 0.45 -0.05;
           loop:1;
           enabled:false"
+          render-order="layer1"
         >
-          <a-plane
-            color="#FFFF"
-            position="0 0 0"
-            height="0.552"
-            width="1"
+          <a-image
+            src="#layout-icon"
+            position="0 0 0.06"
+            height="0.45"
+            width="0.75"
             rotation="0 0 0"
-          ></a-plane>
+          ></a-image>
 
           <a-entity>
             <a-image
@@ -759,72 +768,82 @@
 
         <!--Footer-->
         <a-entity
-          visible="false"
+          visible="true"
           id="portfolio-panels-bottom-two"
           position="0 0 -0.05"
           animation__down="
+         property:position;
+         dur:2000;
+         from:0 -0.05 -0.05;
+         to:0 -0.52 -0.05;
+         loop:1;
+         enabled:false"
+         animation__up="
           property:position;
           dur:2000;
-          from:0 0 -0.05;
-          to:0 -0.55 -0.05;
+          from:0 -0.52 -0.05;
+          to:0 -0.05 -0.05;
           loop:1;
           enabled:false"
-          animation__up="
-          property:position;
-          dur:2000;
-          from:0 -0.55 -0.05;
-          to:0 0 -0.05;
-          loop:1;
-          enabled:false"
+          render-order="layer2"
         >
-          <a-plane
+          <!-- <a-plane
             color="#FFFF"
-            position="0 0 0"
+            position="0 0 0.06"
             height="0.45"
             width="1"
             rotation="0 0 0"
-          ></a-plane>
+          ></a-plane> -->
 
-          <a-text
+          <!-- <a-text
             id="infotext"
-            value="Click The Picture To See Details..."
-            color="black"
+            value="MEET OUR TEAM"
+            color="white"
             align="center"
             width="1"
-            position="0 0.13 0.04"
+            position="0 0.13 0.1"
             material="opacity: 0.5"
-          ></a-text>
+          ></a-text> -->
+
+          <a-image
+            id="infotext"
+            src="#mot-icon"
+            align="center"
+            width="0.6"
+            height="0.1"
+            position="0 0.13 0.1"
+            material="opacity: 1"
+          ></a-image>
 
           <a-entity id="portfolio-item0" visible="true">
+            
+
             <a-image
-              id="profile-one-button"
+              id="ganesh-button"
               class="clickable"
-              src="#profile-icon"
-              position="-0.3 -0.05 0.04"
-              height="0.15"
-              width="0.15"
-              animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
-            ></a-image>
+              src="#ganesh-icon"
+              position="-0.25 -0.05 0.1"
+              height="0.25"
+              width="0.25"
+              ></a-image>
 
             <a-image
               id="profile-two-button"
               class="clickable"
               src="#profile-icon"
-              position="0 -0.05 0.04"
+              position="0 -0.05 0.1"
               height="0.15"
               width="0.15"
-              animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
-            ></a-image>
+              ></a-image>
 
             <a-image
               id="profile-three-button"
               class="clickable"
               src="#profile-icon"
-              position="0.3 -0.05 0.04"
+              position="0.25 -0.05 0.1"
               height="0.15"
               width="0.15"
-              animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
-            ></a-image>
+              ></a-image>
           </a-entity>
 
           <a-entity id="portfolio-item1" visible="false">
@@ -832,7 +851,7 @@
               id="profile-one-button"
               class="clickable"
               src="#profile-icon-two"
-              position="-0.3 -0.05 0.04"
+              position="-0.3 -0.05 0.06"
               height="0.15"
               width="0.15"
               animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
@@ -842,7 +861,7 @@
               id="profile-two-button"
               class="clickable"
               src="#profile-icon-two"
-              position="0 -0.05 0.04"
+              position="0 -0.05 0.06"
               height="0.15"
               width="0.15"
               animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
@@ -852,7 +871,7 @@
               id="profile-three-button"
               class="clickable"
               src="#profile-icon-two"
-              position="0.3 -0.05 0.04"
+              position="0.3 -0.05 0.06"
               height="0.15"
               width="0.15"
               animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
@@ -863,34 +882,36 @@
             visible="false"
             id="portfolio-left-button"
             class="clickable"
-            src="#left-icon"
-            position="-0.3 0 0.04"
+            src="#arrow-icon"
+            rotation="0 0 180"
+            position="-0.3 0 0.06"
             height="0.15"
             width="0.15"
             animation__left="
             property:position;
             dur:2000;
-            from:-0.3 0 -0.05;
-            to:-0.6 0 -0.05;
+            from:-0.3 0 0;
+            to:-0.6 0 0;
             loop:1;
             enabled:false"
+            
           ></a-image>
 
           <a-image
             visible="false"
             id="portfolio-right-button"
             class="clickable"
-            src="#right-icon"
-            position="0.3 0 0.04"
+            src="#arrow-icon"
+            position="0.3 0 0.06"
             height="0.15"
-            width="0.15"
-            animation__right="
+            width="0.15"animation__right="
             property:position;
             dur:2000;
-            from:0.3 0 -0.05;
-            to:0.6 0 -0.05;
+            from:0.3 0 0;
+            to:0.6 0 0;
             loop:1;
             enabled:false"
+            
           ></a-image>
         </a-entity>
 
