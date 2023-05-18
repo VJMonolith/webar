@@ -1,25 +1,1056 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.1/dist/mindar-image-aframe.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-render-order-component@1.1.0/dist/aframe-render-order-component.min.js"></script>
+
+    <script>
+      // const showInfo = () => {
+      //   let y = 0;
+      //   const webButton = document.querySelector("#web-button");
+      //   const emailButton = document.querySelector("#email-button");
+      //   const text = document.querySelector("#text");
+
+      //   webButton.setAttribute("visible", true);
+      //   setTimeout(() => {
+      //     emailButton.setAttribute("visible", true);
+      //   }, 600);
+
+      //   let currentTab = "";
+      //   webButton.addEventListener("click", function (evt) {
+      //     text.setAttribute("value", "https://softmind.tech");
+      //     currentTab = "web";
+      //   });
+      //   emailButton.addEventListener("click", function (evt) {
+      //     text.setAttribute("value", "hello@softmind.tech");
+      //     currentTab = "email";
+      //   });
+
+      //   text.addEventListener("click", function (evt) {
+      //     if (currentTab === "web") {
+      //       window.location.href = "https://softmind.tech";
+      //     }
+      //   });
+      // };
+
+      //Top up Two
+      var menuStatus = false;
+      var logo = false;
+
+      // const showPortfolio = (onDone) => {
+      //   //const portfolio = document.querySelector("#portfolio-panel");
+      //   const callButton = document.querySelector("#call-button");
+      //   const emailButton = document.querySelector("#email-button");
+      //   const linkedinButton = document.querySelector("#linkedin-button");
+      //   const profilename = document.querySelector("#username");
+      //   const designationname = document.querySelector("#designation");
+
+      //   var name = "Jagadeesh Vinayagam";
+      //   var designation = "XR Developer";
+      //   var phone = "tel:+918939427788";
+      //   var email = "mailto:jvinayagam@monolith.asia&body=Hello Jagadeesh";
+      //   var linkedin = "www.linkedin.com/in/jagadeesh-v-364b4a16b";
+
+      //   profilename.setAttribute("value", name);
+      //   designationname.setAttribute("value", designation);
+
+      //   callButton.addEventListener("click", function (evt) {
+      //     window.location.href = phone;
+      //   });
+
+      //   emailButton.addEventListener("click", function (evt) {
+      //     window.location.href = email;
+      //   });
+
+      //   linkedinButton.addEventListener("click", function (evt) {
+      //     window.location.href = linkedin;
+      //   });
+
+      //   let y = 0;
+      //   //portfolio.setAttribute("visible", true);
+      //   const id = setInterval(() => {
+      //     y += 0.008;
+      //     if (y >= 0.6) {
+      //       clearInterval(id);
+      //       onDone();
+      //     }
+      //     portfolio.setAttribute("position", "0 " + y + " -0.05");
+      //   }, 10);
+      // };
+
+      const showAvatar = (onDone) => {
+        const avatar = document.querySelector("#avatar");
+        let z = -0.1;
+        const id = setInterval(() => {
+          z += 0.008;
+          if (z >= 0.1) {
+            clearInterval(id);
+            onDone();
+          }
+          if(z==0.1){
+            logo = true;
+          }
+          avatar.setAttribute("position", "0  -0.07 " + z);
+        }, 10);
+      };
+
+      const showMenu = (onDone) => {
+        const ganeshButton = document.querySelector("#ganesh-button");
+        const leftButton = document.querySelector("#portfolio-left-button");
+        const rightButton = document.querySelector("#portfolio-right-button");
+
+        let currentItem = 0;
+        const showPortfolioItem = (item) => {
+          for (let i = 0; i <= 1; i++) {
+            document
+              .querySelector("#portfolio-item" + i)
+              .setAttribute("visible", i === item);
+          }
+        };
+        leftButton.addEventListener("click", () => {
+          currentItem = (currentItem + 1) % 2;
+          showPortfolioItem(currentItem);
+          console.log(currentItem);
+        });
+        rightButton.addEventListener("click", () => {
+          currentItem = (currentItem - 1 + 2) % 2;
+          showPortfolioItem(currentItem);
+          console.log(currentItem);
+        });
+
+        ganeshButton.addEventListener("click", function (evt) {
+          menuStatus = true;
+          // document
+          //   .getElementById("portfolio-panels-bottom-one")
+          //   .setAttribute("animation__up", "enabled:true");
+          document
+            .getElementById("portfolio-panels-top-one")
+            .setAttribute("animation__down", "enabled:true");
+          setTimeout(() => {
+            // document
+            //   .getElementById("portfolio-panels-bottom-one")
+            //   .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-panels-top-one")
+              .setAttribute("visible", "false");
+
+            if (menuStatus === true) {
+              document
+                .getElementById("portfolio-panels-top-two")
+                .setAttribute("visible", "true");
+              document
+                .getElementById("portfolio-panels-top-two")
+                .setAttribute("animation__up", "enabled:true");
+              // document
+              //   .getElementById("portfolio-panels-bottom-two")
+              //   .setAttribute("visible", "true");
+              // document
+              //   .getElementById("portfolio-panels-bottom-two")
+              //   .setAttribute("animation__down", "enabled:true");
+            }
+          }, 2000);
+        });
+
+        onDone();
+      };
+
+      const targetFound = (onDone) => {
+        const callButton = document.querySelector("#call-button");
+        const emailButton = document.querySelector("#email-button");
+        const linkedinButton = document.querySelector("#linkedin-button");
+        const profilename = document.querySelector("#username");
+        const designationname = document.querySelector("#designation");
+
+
+        var firstname = "Jagadeesh";
+        var fullname = "Jagadeesh Vinayagam";
+        var designation = "XR Developer";
+        var phone = "8939427788";
+        var email = "jvinayagam@monolith.asia";
+        var linkedin = "jagadeesh-v-364b4a16b";
+
+        profilename.setAttribute("value", fullname);
+        designationname.setAttribute("value", designation);
+
+        callButton.addEventListener("click", function (evt) {
+          window.location.href = "tel:+91" + phone;
+        });
+
+        emailButton.addEventListener("click", function (evt) {
+          window.location.href =
+            "mailto:" + email + "?&body=Hello " + firstname + ",";
+        });
+
+        linkedinButton.addEventListener("click", function (evt) {
+          window.location.href =
+            "https://www.linkedin.com/in/" + linkedin + "/";
+        });
+
+          document
+            .getElementById("portfolio-panels-top-one")
+            .setAttribute("visible", "true");
+          document
+            .getElementById("portfolio-panels-top-one")
+            .setAttribute("animation__up", "enabled:true");
+
+          document
+            .getElementById("portfolio-panels-bottom-two")
+            .setAttribute("visible", "true");
+          document
+            .getElementById("portfolio-panels-bottom-two")
+            .setAttribute("animation__down", "enabled:true");
+
+            setTimeout(() => {
+                document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("animation__left", "enabled:true");
+                document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("animation__right", "enabled:true");
+              }, 1000);
+          showMenu();
+        onDone();
+      };
+
+      const targetLost = (onDone) => {
+        if (menuStatus === false) {
+          // //bottom one reset
+          // document
+          //   .getElementById("portfolio-panels-bottom-one")
+          //   .setAttribute("position", "0 0 -0.05");
+          // document
+          //   .getElementById("portfolio-panels-bottom-one")
+          //   .setAttribute("visible", "false");
+          // document
+          //   .getElementById("portfolio-panels-bottom-one")
+          //   .setAttribute("animation__down", "enabled:false");
+          // document
+          //   .getElementById("portfolio-panels-bottom-one")
+          //   .setAttribute("animation__up", "enabled:false");
+
+          //bottom two reset document
+          document
+            .getElementById("portfolio-panels-bottom-two")
+            .setAttribute("position", "0 0 -0.05");
+          document
+            .getElementById("portfolio-panels-bottom-two")
+            .setAttribute("visible", "false");
+          document
+            .getElementById("portfolio-panels-bottom-two")
+            .setAttribute("animation__down", "enabled:false");
+          document
+            .getElementById("portfolio-panels-bottom-two")
+            .setAttribute("animation__up", "enabled:false");
+
+          //top two reset document
+          document
+            .getElementById("portfolio-panels-top-two")
+            .setAttribute("position", "0 0 -0.05");
+          document
+            .getElementById("portfolio-panels-top-two")
+            .setAttribute("visible", "false");
+          document
+            .getElementById("portfolio-panels-top-two")
+            .setAttribute("animation__down", "enabled:false");
+          document
+            .getElementById("portfolio-panels-top-two")
+            .setAttribute("animation__up", "enabled:false");
+
+          //top one reset document
+          document
+            .getElementById("portfolio-panels-top-one")
+            .setAttribute("position", "0 0 -0.05");
+          document
+            .getElementById("portfolio-panels-top-one")
+            .setAttribute("visible", "false");
+          document
+            .getElementById("portfolio-panels-top-one")
+            .setAttribute("animation__down", "enabled:false");
+          document
+            .getElementById("portfolio-panels-top-one")
+            .setAttribute("animation__up", "enabled:false");
+
+          //left and right arrow
+          document
+            .getElementById("portfolio-left-button")
+            .setAttribute("position", "-0.3 0 -0.05");
+          document
+            .getElementById("portfolio-left-button")
+            .setAttribute("visible", "false");
+          document
+            .getElementById("portfolio-left-button")
+            .setAttribute("animation__left", "enabled:false");
+          document
+            .getElementById("portfolio-right-button")
+            .setAttribute("position", "0.3 0 0.05");
+          document
+            .getElementById("portfolio-right-button")
+            .setAttribute("visible", "false");
+          document
+            .getElementById("portfolio-right-button")
+            .setAttribute("animation__right", "enabled:false");
+
+          //profile list
+          document
+            .getElementById("portfolio-item0")
+            .setAttribute("visible", "true");
+          document
+            .getElementById("portfolio-item1")
+            .setAttribute("visible", "false");
+        }
+        onDone();
+      };
+      AFRAME.registerComponent("mytarget", {
+        init: function () {
+          this.el.addEventListener("targetFound", (event) => {
+            console.log("target found");
+            console.log(menuStatus);
+            document
+              .getElementById("portfolio-panels-bottom-one")
+              .setAttribute("position", "0 0 -0.05");
+            document
+              .getElementById("portfolio-panels-bottom-one")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-panels-bottom-one")
+              .setAttribute("animation__down", "enabled:false");
+            document
+              .getElementById("portfolio-panels-bottom-one")
+              .setAttribute("animation__up", "enabled:false");
+
+            //bottom two reset document
+            document
+              .getElementById("portfolio-panels-bottom-two")
+              .setAttribute("position", "0 0 -0.05");
+            document
+              .getElementById("portfolio-panels-bottom-two")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-panels-bottom-two")
+              .setAttribute("animation__down", "enabled:false");
+            document
+              .getElementById("portfolio-panels-bottom-two")
+              .setAttribute("animation__up", "enabled:false");
+
+            //top two reset document
+            document
+              .getElementById("portfolio-panels-top-two")
+              .setAttribute("position", "0 0 -0.05");
+            document
+              .getElementById("portfolio-panels-top-two")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-panels-top-two")
+              .setAttribute("animation__down", "enabled:false");
+            document
+              .getElementById("portfolio-panels-top-two")
+              .setAttribute("animation__up", "enabled:false");
+
+            //top one reset document
+            document
+              .getElementById("portfolio-panels-top-one")
+              .setAttribute("position", "0 0 -0.05");
+            document
+              .getElementById("portfolio-panels-top-one")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-panels-top-one")
+              .setAttribute("animation__down", "enabled:false");
+            document
+              .getElementById("portfolio-panels-top-one")
+              .setAttribute("animation__up", "enabled:false");
+
+            //left and right arrow
+          document
+            .getElementById("portfolio-left-button")
+            .setAttribute("position", "-0.3 0 -0.05");
+          document
+            .getElementById("portfolio-left-button")
+            .setAttribute("visible", "false");
+          document
+            .getElementById("portfolio-left-button")
+            .setAttribute("animation__left", "enabled:false");
+          document
+            .getElementById("portfolio-right-button")
+            .setAttribute("position", "0.3 0 0.05");
+          document
+            .getElementById("portfolio-right-button")
+            .setAttribute("visible", "false");
+          document
+            .getElementById("portfolio-right-button")
+            .setAttribute("animation__right", "enabled:false");
+
+            //profile list
+            document
+              .getElementById("portfolio-item0")
+              .setAttribute("visible", "true");
+            document
+              .getElementById("portfolio-item1")
+              .setAttribute("visible", "false");
+
+            showAvatar(() => {
+              document
+                .getElementById("avatar")
+                .setAttribute("animation-mixer", "clip: Take 001");
+              targetFound();
+            });
+          });
+
+          this.el.addEventListener("targetLost", (event) => {
+            console.log("target lost");
+
+            menuStatus = false;
+
+            console.log(menuStatus);
+
+            targetLost();
+          });
+        },
+      });
+    </script>
+    <style>
+      #example-scanning-overlay {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: transparent;
+        z-index: 2;
+      }
+      @media (min-aspect-ratio: 1/1) {
+        #example-scanning-overlay .inner {
+          width: 50vh;
+          height: 68vh;
+        }
+      }
+      @media (max-aspect-ratio: 1/1) {
+        #example-scanning-overlay .inner {
+          width: 80vw;
+          height: 80vw;
+        }
+      }
+
+      #example-scanning-overlay .inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        background: linear-gradient(to right, white 10px, transparent 10px) 0 0,
+          linear-gradient(to right, white 10px, transparent 10px) 0 100%,
+          linear-gradient(to left, white 10px, transparent 10px) 100% 0,
+          linear-gradient(to left, white 10px, transparent 10px) 100% 100%,
+          linear-gradient(to bottom, white 10px, transparent 10px) 0 0,
+          linear-gradient(to bottom, white 10px, transparent 10px) 100% 0,
+          linear-gradient(to top, white 10px, transparent 10px) 0 100%,
+          linear-gradient(to top, white 10px, transparent 10px) 100% 100%;
+        background-repeat: no-repeat;
+        background-size: 40px 40px;
+      }
+
+      #example-scanning-overlay.hidden {
+        display: none;
+      }
+
+      #example-scanning-overlay img {
+        opacity: 0.6;
+        width: 90%;
+        align-self: center;
+      }
+
+      #example-scanning-overlay .inner .scanline {
+        position: absolute;
+        width: 100%;
+        height: 10px;
+        background: white;
+        animation: move 2s linear infinite;
+      }
+      @keyframes move {
+        0%,
+        100% {
+          top: 0%;
+        }
+        50% {
+          top: calc(100% - 10px);
+        }
+      }
+    </style>
   </head>
   <body>
+    <div id="example-scanning-overlay" class="hidden">
+      <div class="inner">
+        <img src="monolith.jpeg" />
+        <div class="scanline"></div>
+      </div>
+    </div>
+
     <a-scene
-      mindar-image="imageTargetSrc: targets.mind;"
+      mindar-image="imageTargetSrc: monolith.mind; uiScanning: #example-scanning-overlay; filterMinCF:0.01; filterBeta: 100; warmupTolerance: 2; missTolerance: 2;"
       vr-mode-ui="enabled: false"
+      embedded
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
       device-orientation-permission-ui="enabled: false"
+      render-order="layer1, layer2, layer3"
     >
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-      <a-entity mindar-image-target="targetIndex: 0">
+      <asset>
+        <img id="icon-web" src="img/web.png" />
+        <img id="icon-email" src="img/email.png" />
+        <img id="card" src="img/card.png" />
+        <img id="icon-left" src="img/left.png" />
+        <img id="icon-right" src="img/right.png" />
+        <img id="portfolio-1" src="img/credit-card-1.png" />
+        <img id="portfolio-2" src="img/credit-card-2.png" />
+
+        <a-asset-item
+          id="avatarModel"
+          src="assets/ethereum_logo.glb"
+        ></a-asset-item>
+
+        <img id="call-icon" src="ico/call-2.png" />
+        <img id="email-icon" src="ico/email-3.png" />
+        <img id="linkedin-icon" src="ico/linkedin.png" />
+        <img id="profile-icon" src="ico/profile.png" />
+        <img id="profile-icon-two" src="ico/woman.png" />
+        <img id="left-icon" src="ico/previous-2.png" />
+        <img id="right-icon" src="ico/previous-2-copy.png" />
+        <img id="menu-icon" src="ico/menu-button.png" />
+        <img id="logo-icon" src="ico/monolith-img.png" />
+
+        <img id="center-icon" src="pic/center.png" />
+        <img id="anim-icon" src="pic/anim.png" />
+        <img id="video-icon" src="pic/video.png" />
+        <img id="game-icon" src="pic/game.png" />
+        <img id="comic-icon" src="pic/comic.png" />
+        <img id="vr-icon" src="pic/vr.png" />
+        <img id="top-icon" src="pic/top.png" />
+        <img id="mot-icon" src="pic/mot.png" />
+        <img id="ganesh-icon" src="pic/ganesh.png" />
+        <img id="arrow-icon" src="pic/arrow.png" />
+        <img id="layout-icon" src="pic/layout.png" />
+      </asset>
+
+      <a-camera
+        position="0 0 0"
+        look-controls="enabled: false"
+        cursor="fuse: false; rayOrigin: mouse;"
+        raycaster="far: 100000; objects: .clickable"
+      >
+      </a-camera>
+
+      <!--Root-->
+      <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
         <a-plane
-          color="blue"
-          opaciy="0.5"
+          src="monolith.jpeg"
           position="0 0 0"
-          height="0.552"
+          height="1.5"
           width="1"
           rotation="0 0 0"
         ></a-plane>
+
+        <!--Header-->
+        <a-entity
+          visible="false"
+          id="portfolio-panels-top-two"
+          position="0 0 -0.05"
+          animation__down="
+          property:position;
+          dur:2000;
+          from:0 0.45 -0.05;
+          to:0 -0.1 -0.05;
+          loop:1;
+          enabled:false"
+          animation__up="
+          property:position;
+          dur:2000;
+          from:0 -0.1 -0.05;
+          to:0 0.45 -0.05;
+          loop:1;
+          enabled:false"
+          render-order="layer1"
+        >
+          <a-image
+            src="#layout-icon"
+            position="0 0 0.06"
+            height="0.45"
+            width="0.75"
+            rotation="0 0 0"
+          ></a-image>
+
+          <a-entity>
+            <a-image
+              src="#profile-icon"
+              width="0.20"
+              height="0.20"
+              position="-0.3 0.1 0.03"
+            ></a-image>
+
+            <a-text
+              id="username"
+              value="Jagadeesh Vinayagam"
+              color="black"
+              width="1"
+              position="-0.15 0.15 0.03"
+              material="opacity: 0.5"
+            ></a-text>
+
+            <a-text
+              id="designation"
+              class="clickable"
+              value="XR Developer"
+              color="black"
+              width="1"
+              position="-0.15 0.05 0.03"
+              material="opacity: 0.5"
+            ></a-text>
+          </a-entity>
+
+          <a-image
+            id="call-button"
+            class="clickable"
+            src="#call-icon"
+            position="-0.3 -0.15 0.04"
+            height="0.15"
+            width="0.15"
+            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+          ></a-image>
+
+          <a-image
+            id="email-button"
+            class="clickable"
+            src="#email-icon"
+            position="0 -0.15 0.04"
+            height="0.15"
+            width="0.15"
+            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+          ></a-image>
+
+          <a-image
+            id="linkedin-button"
+            class="clickable"
+            src="#linkedin-icon"
+            position="0.3 -0.15 0.04"
+            height="0.15"
+            width="0.15"
+            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+          ></a-image>
+
+          <!-- <a-entity id="portfolio-item0" visible="true">
+            <a-image
+              class="clickable"
+              src="#portfolio-1"
+              alpha-test="0.5"
+              position="0 0 0"
+              height=".75"
+              width=".75"
+            >
+            </a-image>
+          </a-entity>
+
+          <a-entity id="portfolio-item1" visible="false">
+            <a-image
+              class="clickable"
+              src="#portfolio-2"
+              alpha-test="0.5"
+              position="0 0 0"
+              height=".75"
+              width=".75"
+            >
+            </a-image>
+          </a-entity>
+
+          <a-image
+            visible="false"
+            id="portfolio-left-button"
+            class="clickable"
+            src="#icon-left"
+            position="-0.5 0 0"
+            height="0.15"
+            width="0.15"
+          ></a-image>
+
+          <a-image
+            visible="false"
+            id="portfolio-right-button"
+            class="clickable"
+            src="#icon-right"
+            position="0.5 0 0"
+            height="0.15"
+            width="0.15"
+          ></a-image> -->
+        </a-entity>
+        <a-entity
+          visible="false"
+          id="portfolio-panels-top-one"
+          position="0 0 -0.05"
+          animation__down="
+        property:position;
+        dur:2000;
+        from:0 0.45 -0.05;
+        to:0 -0.1 -0.05;
+        loop:1;
+        enabled:false"
+          animation__up="
+        property:position;
+        dur:2000;
+        from:0 -0.1 -0.05;
+        to:0 0.45 -0.05;
+        loop:1;
+        enabled:false"
+        render-order="layer2"
+        >
+          <a-image
+            src="#top-icon"
+            position="0 0 0.1"
+            height="0.45"
+            width="0.45"
+            rotation="0 0 0"
+          ></a-image>
+
+          
+          <!-- <a-entity id="portfolio-item0" visible="true">
+          <a-image
+            class="clickable"
+            src="#portfolio-1"
+            alpha-test="0.5"
+            position="0 0 0"
+            height=".75"
+            width=".75"
+          >
+          </a-image>
+        </a-entity>
+
+        <a-entity id="portfolio-item1" visible="false">
+          <a-image
+            class="clickable"
+            src="#portfolio-2"
+            alpha-test="0.5"
+            position="0 0 0"
+            height=".75"
+            width=".75"
+          >
+          </a-image>
+        </a-entity>
+
+        <a-image
+          visible="false"
+          id="portfolio-left-button"
+          class="clickable"
+          src="#icon-left"
+          position="-0.5 0 0"
+          height="0.15"
+          width="0.15"
+        ></a-image>
+
+        <a-image
+          visible="false"
+          id="portfolio-right-button"
+          class="clickable"
+          src="#icon-right"
+          position="0.5 0 0"
+          height="0.15"
+          width="0.15"
+        ></a-image> -->
+        </a-entity>
+
+        <!--Footer-->
+        <a-entity
+          visible="true"
+          id="portfolio-panels-bottom-two"
+          position="0 0 -0.05"
+          animation__down="
+         property:position;
+         dur:2000;
+         from:0 -0.05 -0.05;
+         to:0 -0.52 -0.05;
+         loop:1;
+         enabled:false"
+         animation__up="
+          property:position;
+          dur:2000;
+          from:0 -0.52 -0.05;
+          to:0 -0.05 -0.05;
+          loop:1;
+          enabled:false"
+          render-order="layer2"
+        >
+          <!-- <a-plane
+            color="#FFFF"
+            position="0 0 0.06"
+            height="0.45"
+            width="1"
+            rotation="0 0 0"
+          ></a-plane> -->
+
+          <!-- <a-text
+            id="infotext"
+            value="MEET OUR TEAM"
+            color="white"
+            align="center"
+            width="1"
+            position="0 0.13 0.1"
+            material="opacity: 0.5"
+          ></a-text> -->
+
+          <a-image
+            id="infotext"
+            src="#mot-icon"
+            align="center"
+            width="0.6"
+            height="0.1"
+            position="0 0.13 0.1"
+            material="opacity: 1"
+          ></a-image>
+
+          <a-entity id="portfolio-item0" visible="true">
+            
+
+            <a-image
+              id="ganesh-button"
+              class="clickable"
+              src="#ganesh-icon"
+              position="-0.25 -0.05 0.1"
+              height="0.25"
+              width="0.25"
+              ></a-image>
+
+            <a-image
+              id="profile-two-button"
+              class="clickable"
+              src="#profile-icon"
+              position="0 -0.05 0.1"
+              height="0.15"
+              width="0.15"
+              ></a-image>
+
+            <a-image
+              id="profile-three-button"
+              class="clickable"
+              src="#profile-icon"
+              position="0.25 -0.05 0.1"
+              height="0.15"
+              width="0.15"
+              ></a-image>
+          </a-entity>
+
+          <a-entity id="portfolio-item1" visible="false">
+            <a-image
+              id="profile-one-button"
+              class="clickable"
+              src="#profile-icon-two"
+              position="-0.3 -0.05 0.06"
+              height="0.15"
+              width="0.15"
+              animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+            ></a-image>
+
+            <a-image
+              id="profile-two-button"
+              class="clickable"
+              src="#profile-icon-two"
+              position="0 -0.05 0.06"
+              height="0.15"
+              width="0.15"
+              animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+            ></a-image>
+
+            <a-image
+              id="profile-three-button"
+              class="clickable"
+              src="#profile-icon-two"
+              position="0.3 -0.05 0.06"
+              height="0.15"
+              width="0.15"
+              animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+            ></a-image>
+          </a-entity>
+
+          <a-image
+            visible="false"
+            id="portfolio-left-button"
+            class="clickable"
+            src="#arrow-icon"
+            rotation="0 0 180"
+            position="-0.3 0 0.06"
+            height="0.15"
+            width="0.15"
+            animation__left="
+            property:position;
+            dur:2000;
+            from:-0.3 0 0;
+            to:-0.6 0 0;
+            loop:1;
+            enabled:false"
+            
+          ></a-image>
+
+          <a-image
+            visible="false"
+            id="portfolio-right-button"
+            class="clickable"
+            src="#arrow-icon"
+            position="0.3 0 0.06"
+            height="0.15"
+            width="0.15"animation__right="
+            property:position;
+            dur:2000;
+            from:0.3 0 0;
+            to:0.6 0 0;
+            loop:1;
+            enabled:false"
+            
+          ></a-image>
+        </a-entity>
+
+        <a-entity
+          visible="false"
+          id="portfolio-panels-bottom-one"
+          position="0 0 -0.05"
+          animation__down="
+          property:position;
+          dur:2000;
+          from:0 0 -0.05;
+          to:0 -0.55 -0.05;
+          loop:1;
+          enabled:false"
+          animation__up="
+          property:position;
+          dur:2000;
+          from:0 -0.55 -0.05;
+          to:0 0 -0.05;
+          loop:1;
+          enabled:false"
+        >
+          <a-plane
+            color="#FFFF"
+            position="0 0 0"
+            height="0.45"
+            width="1"
+            rotation="0 0 0"
+          ></a-plane>
+
+          <a-text
+            id="infotext"
+            value="Meet Our Team"
+            color="black"
+            align="center"
+            width="1"
+            position="0 0.13 0.04"
+            material="opacity: 0.5"
+          ></a-text>
+
+          <a-entity id="portfolio-item" visible="true">
+            <a-image
+              id="menu-button"
+              class="clickable"
+              src="#menu-icon"
+              position="0 -0.05 0.04"
+              height="0.15"
+              width="0.45"
+              animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+            ></a-image>
+          </a-entity>
+        </a-entity>
+
+        <!--Middle-->
+        <!-- <a-entity
+          id="avatar"
+          rotation="0 0 0"
+          position="0 -0.012 0"
+          scale="0.2 0.2 0.2"
+          gltf-model="#avatarModel"
+          animation-mixer="clip:Static Pose; loop:infinite;"
+        ></a-entity> -->
+
+        <a-entity
+        position="0 -0.05 0"
+        geometry="primitive: box;
+        depth:0.12;
+        height:0.5;
+        width:1;
+        rotation:0 0 0
+      "
+        material="color:red; opacity:0.5;"
+        render-order="layer1"
+      ></a-entity>
+
+        <a-entity id="avatar" visible="true" position="0 -0.012 0" render-order="layer2">
+          <a-image
+            src="#center-icon"
+            height="0.15"
+            width="0.55"
+            animation="property: scale; to: 1.1 1.1 1.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+          ></a-image>
+
+          <a-image
+            src="#anim-icon"
+            height="0.06"
+            width="0.06"
+            position="-0.21 0.14 0"
+            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+          ></a-image>
+
+          <a-image
+            src="#video-icon"
+            height="0.06"
+            width="0.06"
+            position="-0.13 0.14 0"
+            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+          ></a-image>
+
+          <a-image
+            src="#game-icon"
+            height="0.06"
+            width="0.06"
+            position="-0.05 0.14 0"
+            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+          ></a-image>
+
+          <a-image
+            src="#comic-icon"
+            height="0.06"
+            width="0.06"
+            position="0.03 0.14 0"
+            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+          ></a-image>
+
+          <a-image
+            src="#vr-icon"
+            height="0.06"
+            width="0.06"
+            position="0.15 0.14 0"
+            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+          ></a-image>
+        </a-entity>
+        </a-entity>
+
+        
+
+        <!--Info-->>
+        <!-- <a-text
+          id="text"
+          class="clickable"
+          value=""
+          color="black"
+          align="center"
+          width="1"
+          position="0 -0.6 0"
+          geometry="primitive:plane; height: 0.1; width: 1;"
+          material="opacity: 0.5"
+        ></a-text> -->
       </a-entity>
     </a-scene>
   </body>
