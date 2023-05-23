@@ -744,6 +744,20 @@
             .getElementById("portfolio-panels-bottom-two")
             .setAttribute("animation__up", "enabled:false");
 
+            //top one reset document
+            document
+              .getElementById("portfolio-panels-top-one")
+              .setAttribute("position", "0 0 -0.05");
+            document
+              .getElementById("portfolio-panels-top-one")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-panels-top-one")
+              .setAttribute("animation__down", "enabled:false");
+            document
+              .getElementById("portfolio-panels-top-one")
+              .setAttribute("animation__up", "enabled:false");
+
           //top two reset document
           document
             .getElementById("portfolio-panels-top-two")
@@ -872,6 +886,20 @@
               .setAttribute("animation__down", "enabled:false");
             document
               .getElementById("portfolio-panels-bottom-two")
+              .setAttribute("animation__up", "enabled:false");
+
+              //top one reset document
+            document
+              .getElementById("portfolio-panels-top-one")
+              .setAttribute("position", "0 0 -0.05");
+            document
+              .getElementById("portfolio-panels-top-one")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-panels-top-one")
+              .setAttribute("animation__down", "enabled:false");
+            document
+              .getElementById("portfolio-panels-top-one")
               .setAttribute("animation__up", "enabled:false");
 
             //top two reset document
@@ -1071,8 +1099,8 @@
       }
       @media (min-aspect-ratio: 1/1) {
         #example-scanning-overlay .inner {
-          width: 70vh;
-          height: 70vh;
+          width: 50vh;
+          height: 50vh;
         }
       }
       @media (max-aspect-ratio: 1/1) {
@@ -1131,13 +1159,13 @@
   <body>
     <div id="example-scanning-overlay" class="hidden">
       <div class="inner">
-        <img src="pic/thumb.png" />
+        <img src="pic/rf-image.png" />
         <div class="scanline"></div>
       </div>
     </div>
 
     <a-scene
-      mindar-image="imageTargetSrc: targets/board-target.mind; uiScanning: #example-scanning-overlay; filterMinCF:0.01; filterBeta: 100; warmupTolerance: 2; missTolerance: 2;"
+      mindar-image="imageTargetSrc: targets/target-image.mind; uiScanning: #example-scanning-overlay; filterMinCF:0.01; filterBeta: 100; warmupTolerance: 2; missTolerance: 2;"
       vr-mode-ui="enabled: false"
       embedded
       color-space="sRGB"
@@ -1178,7 +1206,7 @@
         <img id="dashboard-icon" src="pic/dashboard.png" />
         <img id="background-icon" src="pic/clip.png" />
         <img id="bg-icon" src="pic/topbg.png" />
-        <img id="thumb-icon" src="pic/thumb.png" />
+        <img id="thumb-icon" src="pic/rf-image.png" />
         <img id="cta-icon" src="pic/cta-button.png" />
       </asset>
 
