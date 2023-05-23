@@ -8,78 +8,12 @@
     <script src="https://unpkg.com/aframe-render-order-component@1.1.0/dist/aframe-render-order-component.min.js"></script>
 
     <script>
-      // const showInfo = () => {
-      //   let y = 0;
-      //   const webButton = document.querySelector("#web-button");
-      //   const emailButton = document.querySelector("#email-button");
-      //   const text = document.querySelector("#text");
-
-      //   webButton.setAttribute("visible", true);
-      //   setTimeout(() => {
-      //     emailButton.setAttribute("visible", true);
-      //   }, 600);
-
-      //   let currentTab = "";
-      //   webButton.addEventListener("click", function (evt) {
-      //     text.setAttribute("value", "https://softmind.tech");
-      //     currentTab = "web";
-      //   });
-      //   emailButton.addEventListener("click", function (evt) {
-      //     text.setAttribute("value", "hello@softmind.tech");
-      //     currentTab = "email";
-      //   });
-
-      //   text.addEventListener("click", function (evt) {
-      //     if (currentTab === "web") {
-      //       window.location.href = "https://softmind.tech";
-      //     }
-      //   });
-      // };
 
       //Top up Two
       var menuStatus = false;
       var logo = false;
-
-      // const showPortfolio = (onDone) => {
-      //   //const portfolio = document.querySelector("#portfolio-panel");
-      //   const callButton = document.querySelector("#call-button");
-      //   const emailButton = document.querySelector("#email-button");
-      //   const linkedinButton = document.querySelector("#linkedin-button");
-      //   const profilename = document.querySelector("#username");
-      //   const designationname = document.querySelector("#designation");
-
-      //   var name = "Jagadeesh Vinayagam";
-      //   var designation = "XR Developer";
-      //   var phone = "tel:+918939427788";
-      //   var email = "mailto:jvinayagam@monolith.asia&body=Hello Jagadeesh";
-      //   var linkedin = "www.linkedin.com/in/jagadeesh-v-364b4a16b";
-
-      //   profilename.setAttribute("value", name);
-      //   designationname.setAttribute("value", designation);
-
-      //   callButton.addEventListener("click", function (evt) {
-      //     window.location.href = phone;
-      //   });
-
-      //   emailButton.addEventListener("click", function (evt) {
-      //     window.location.href = email;
-      //   });
-
-      //   linkedinButton.addEventListener("click", function (evt) {
-      //     window.location.href = linkedin;
-      //   });
-
-      //   let y = 0;
-      //   //portfolio.setAttribute("visible", true);
-      //   const id = setInterval(() => {
-      //     y += 0.008;
-      //     if (y >= 0.6) {
-      //       clearInterval(id);
-      //       onDone();
-      //     }
-      //     portfolio.setAttribute("position", "0 " + y + " -0.05");
-      //   }, 10);
-      // };
+      var news = false;
+      var event = false;
 
       const showAvatar = (onDone) => {
         const avatar = document.querySelector("#avatar");
@@ -98,112 +32,122 @@
       };
 
       const showMenu = (onDone) => {
-        const ganeshButton = document.querySelector("#ganesh-button");
+        const teamButton = document.querySelector("#team-button");
+        const newsletterButton = document.querySelector("#newsletter-button");
+        const eventButton = document.querySelector("#event-button");
         const leftButton = document.querySelector("#portfolio-left-button");
         const rightButton = document.querySelector("#portfolio-right-button");
+        const newsleftButton = document.querySelector("#portfolio-left-button-three");
+        const newsrightButton = document.querySelector("#portfolio-right-button-three");
+        const eventleftButton = document.querySelector("#portfolio-left-button-four");
+        const eventrightButton = document.querySelector("#portfolio-right-button-four");
 
         let currentItem = 0;
         const showPortfolioItem = (item) => {
-          for (let i = 0; i <= 1; i++) {
+          for (let i = 0; i <= 5; i++) {
             document
               .querySelector("#portfolio-item" + i)
               .setAttribute("visible", i === item);
           }
         };
-        leftButton.addEventListener("click", () => {
-          currentItem = (currentItem + 1) % 2;
-          showPortfolioItem(currentItem);
-          console.log(currentItem);
-        });
         rightButton.addEventListener("click", () => {
-          currentItem = (currentItem - 1 + 2) % 2;
+          currentItem = (currentItem + 1) % 6;
+          showPortfolioItem(currentItem);
+          console.log(currentItem);
+        });
+        leftButton.addEventListener("click", () => {
+          currentItem = (currentItem - 1 + 6) % 6;
           showPortfolioItem(currentItem);
           console.log(currentItem);
         });
 
-        ganeshButton.addEventListener("click", function (evt) {
-          menuStatus = true;
-          // document
-          //   .getElementById("portfolio-panels-bottom-one")
-          //   .setAttribute("animation__up", "enabled:true");
-          document
-            .getElementById("portfolio-panels-top-one")
-            .setAttribute("animation__down", "enabled:true");
-          setTimeout(() => {
-            // document
-            //   .getElementById("portfolio-panels-bottom-one")
-            //   .setAttribute("visible", "false");
+        let newsItem = 0;
+        const showPortfolioNewsItem = (item) => {
+          for (let i = 0; i <= 2; i++) {
             document
-              .getElementById("portfolio-panels-top-one")
-              .setAttribute("visible", "false");
-
-            if (menuStatus === true) {
-              document
-                .getElementById("portfolio-panels-top-two")
-                .setAttribute("visible", "true");
-              document
-                .getElementById("portfolio-panels-top-two")
-                .setAttribute("animation__up", "enabled:true");
-              // document
-              //   .getElementById("portfolio-panels-bottom-two")
-              //   .setAttribute("visible", "true");
-              // document
-              //   .getElementById("portfolio-panels-bottom-two")
-              //   .setAttribute("animation__down", "enabled:true");
-            }
-          }, 2000);
+              .querySelector("#portfolio-three-item" + i)
+              .setAttribute("visible", i === item);
+          }
+        };
+        newsrightButton.addEventListener("click", () => {
+          newsItem = (newsItem + 1) % 3;
+          showPortfolioNewsItem(newsItem);
+          console.log(newsItem);
+        });
+        newsleftButton.addEventListener("click", () => {
+          newsItem = (newsItem - 1 + 3) % 3;
+          showPortfolioNewsItem(newsItem);
+          console.log(newsItem);
         });
 
-        onDone();
-      };
-
-      const targetFound = (onDone) => {
-        const callButton = document.querySelector("#call-button");
-        const emailButton = document.querySelector("#email-button");
-        const linkedinButton = document.querySelector("#linkedin-button");
-        const profilename = document.querySelector("#username");
-        const designationname = document.querySelector("#designation");
-
-
-        var firstname = "Jagadeesh";
-        var fullname = "Jagadeesh Vinayagam";
-        var designation = "XR Developer";
-        var phone = "8939427788";
-        var email = "jvinayagam@monolith.asia";
-        var linkedin = "jagadeesh-v-364b4a16b";
-
-        profilename.setAttribute("value", fullname);
-        designationname.setAttribute("value", designation);
-
-        callButton.addEventListener("click", function (evt) {
-          window.location.href = "tel:+91" + phone;
+        let eventItem = 0;
+        const showPortfolioEventItem = (item) => {
+          for (let i = 0; i <= 2; i++) {
+            document
+              .querySelector("#portfolio-four-item" + i)
+              .setAttribute("visible", i === item);
+          }
+        };
+        eventrightButton.addEventListener("click", () => {
+          eventItem = (eventItem + 1) % 3;
+          showPortfolioEventItem(eventItem);
+          console.log(eventItem);
         });
-
-        emailButton.addEventListener("click", function (evt) {
-          window.location.href =
-            "mailto:" + email + "?&body=Hello " + firstname + ",";
+        eventleftButton.addEventListener("click", () => {
+          eventItem = (eventItem - 1 + 3) % 3;
+          showPortfolioEventItem(eventItem);
+          console.log(eventItem);
         });
-
-        linkedinButton.addEventListener("click", function (evt) {
-          window.location.href =
-            "https://www.linkedin.com/in/" + linkedin + "/";
-        });
-
+        
+        if(menuStatus === false && news === false && event === false){
+          logo = true
+          console.log(logo, menuStatus, news, event);
           document
             .getElementById("portfolio-panels-top-one")
             .setAttribute("visible", "true");
           document
             .getElementById("portfolio-panels-top-one")
             .setAttribute("animation__up", "enabled:true");
+            document
+            .getElementById("portfolio-panels-top-one")
+            .setAttribute("animation__down", "enabled:false");
+        }
 
+        teamButton.addEventListener("click", function (evt) {
+          menuStatus = true;
+          console.log(logo, menuStatus, news, event);
+          if (menuStatus === true && logo === true) {
+          logo = false;
           document
-            .getElementById("portfolio-panels-bottom-two")
-            .setAttribute("visible", "true");
+            .getElementById("portfolio-panels-top-one")
+            .setAttribute("animation__up", "enabled:false");
           document
-            .getElementById("portfolio-panels-bottom-two")
+            .getElementById("portfolio-panels-top-one")
             .setAttribute("animation__down", "enabled:true");
+          setTimeout(() => {
+            
+            document
+              .getElementById("portfolio-panels-top-one")
+              .setAttribute("visible", "false");
+              document
+                .getElementById("portfolio-panels-top-two")
+                .setAttribute("animation__down", "enabled:false");
+            
+              document
+                .getElementById("portfolio-panels-top-two")
+                .setAttribute("visible", "true");
+              document
+                .getElementById("portfolio-panels-top-two")
+                .setAttribute("animation__up", "enabled:true");
+              
+              setTimeout(() => {
 
-            setTimeout(() => {
+                document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("animation__right", "enabled:false");
+                document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("animation__left", "enabled:false");
                 document
                   .getElementById("portfolio-left-button")
                   .setAttribute("visible", "true");
@@ -217,26 +161,575 @@
                   .getElementById("portfolio-right-button")
                   .setAttribute("animation__right", "enabled:true");
               }, 1000);
+           }, 2000);
+          }
+        
+          else if (menuStatus === true && news === true) {
+          news = false;
+          setTimeout(() => {
+            document
+                  .getElementById("portfolio-left-button-three")
+                  .setAttribute("animation__left", "enabled:false");
+                
+                document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("animation__right", "enabled:false");
+            
+                document
+                  .getElementById("portfolio-left-button-three")
+                  .setAttribute("animation__right", "enabled:true");
+                
+                document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("animation__left", "enabled:true");
+            setTimeout(() => {
+              document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("visible", "false");
+              document
+                  .getElementById("portfolio-left-button-three")
+                  .setAttribute("visible", "false");
+                  document
+            .getElementById("portfolio-panels-top-three")
+            .setAttribute("animation__up", "enabled:false");
+          document
+            .getElementById("portfolio-panels-top-three")
+            .setAttribute("animation__down", "enabled:true");
+          setTimeout(() => {
+            
+            document
+              .getElementById("portfolio-panels-top-three")
+              .setAttribute("visible", "false");
+              document
+                .getElementById("portfolio-panels-top-two")
+                .setAttribute("animation__down", "enabled:false");
+            
+              document
+                .getElementById("portfolio-panels-top-two")
+                .setAttribute("visible", "true");
+              document
+                .getElementById("portfolio-panels-top-two")
+                .setAttribute("animation__up", "enabled:true");
+              
+              setTimeout(() => {
+                document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("animation__right", "enabled:false");
+                  document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("animation__left", "enabled:false");
+                document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("animation__left", "enabled:true");
+                document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("animation__right", "enabled:true");
+              }, 1000);
+           }, 2000);
+          }, 2000);
+          }, 1000);
+          }
+        
+          else if (menuStatus === true && event === true) {
+          event = false;
+          setTimeout(() => {
+            document
+                  .getElementById("portfolio-right-button-four")
+                  .setAttribute("animation__right", "enabled:false");
+               
+                document
+                  .getElementById("portfolio-left-button-four")
+                  .setAttribute("animation__left", "enabled:false");
+            
+                document
+                  .getElementById("portfolio-left-button-four")
+                  .setAttribute("animation__right", "enabled:true");
+               
+                document
+                  .getElementById("portfolio-right-button-four")
+                  .setAttribute("animation__left", "enabled:true");
+            setTimeout(() => {
+              document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("visible", "false");
+              document
+                  .getElementById("portfolio-left-button-four")
+                  .setAttribute("visible", "false");
+                  document
+            .getElementById("portfolio-panels-top-four")
+            .setAttribute("animation__up", "enabled:false");
+          document
+            .getElementById("portfolio-panels-top-four")
+            .setAttribute("animation__down", "enabled:true");
+          setTimeout(() => {
+            
+            document
+              .getElementById("portfolio-panels-top-four")
+              .setAttribute("visible", "false");
+              document
+                .getElementById("portfolio-panels-top-two")
+                .setAttribute("animation__down", "enabled:false");
+              document
+                .getElementById("portfolio-panels-top-two")
+                .setAttribute("visible", "true");
+              document
+                .getElementById("portfolio-panels-top-two")
+                .setAttribute("animation__up", "enabled:true");
+              
+              setTimeout(() => {
+                document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("animation__left", "enabled:false");
+                  document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("animation__right", "enabled:false");
+                document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("animation__left", "enabled:true");
+                document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("animation__right", "enabled:true");
+              }, 1000);
+           }, 2000);
+          }, 2000);
+          }, 1000);
+          }
+          console.log(logo, menuStatus, news, event);
+        });
+
+        newsletterButton.addEventListener("click", function (evt) {
+          news = true;
+          console.log(logo, menuStatus, news, event);
+
+          if (news === true && logo === true) {
+          logo = false;
+          document
+            .getElementById("portfolio-panels-top-one")
+            .setAttribute("animation__up", "enabled:false");
+          document
+            .getElementById("portfolio-panels-top-one")
+            .setAttribute("animation__down", "enabled:true");
+          setTimeout(() => {
+            
+            document
+              .getElementById("portfolio-panels-top-one")
+              .setAttribute("visible", "false");
+              document
+                .getElementById("portfolio-panels-top-three")
+                .setAttribute("animation__down", "enabled:false");
+            
+              document
+                .getElementById("portfolio-panels-top-three")
+                .setAttribute("visible", "true");
+              document
+                .getElementById("portfolio-panels-top-three")
+                .setAttribute("animation__up", "enabled:true");
+              
+              setTimeout(() => {
+                document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("animation__left", "enabled:false")
+                  document
+                  .getElementById("portfolio-left-button-three")
+                  .setAttribute("animation__right", "enabled:false")
+                document
+                  .getElementById("portfolio-left-button-three")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-left-button-three")
+                  .setAttribute("animation__left", "enabled:true");
+                document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("animation__right", "enabled:true");
+              }, 1000);
+           }, 2000);
+          }
+        
+          else if (news === true && menuStatus === true) {
+          menuStatus = false;
+          setTimeout(() => {
+            document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("animation__left", "enabled:false");
+                
+                document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("animation__right", "enabled:false");
+            
+                document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("animation__right", "enabled:true");
+                
+                document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("animation__left", "enabled:true");
+            setTimeout(() => {
+              document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("visible", "false");
+              document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("visible", "false");
+          document
+            .getElementById("portfolio-panels-top-two")
+            .setAttribute("animation__up", "enabled:false");
+          document
+            .getElementById("portfolio-panels-top-two")
+            .setAttribute("animation__down", "enabled:true");
+          setTimeout(() => {
+            
+            document
+              .getElementById("portfolio-panels-top-two")
+              .setAttribute("visible", "false");
+              document
+                .getElementById("portfolio-panels-top-three")
+                .setAttribute("animation__down", "enabled:false");
+            
+              document
+                .getElementById("portfolio-panels-top-three")
+                .setAttribute("visible", "true");
+              document
+                .getElementById("portfolio-panels-top-three")
+                .setAttribute("animation__up", "enabled:true");
+              
+              setTimeout(() => {
+                document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("animation__left", "enabled:false");
+                  document
+                  .getElementById("portfolio-left-button-three")
+                  .setAttribute("animation__right", "enabled:false");
+                document
+                  .getElementById("portfolio-left-button-three")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-left-button-three")
+                  .setAttribute("animation__left", "enabled:true");
+                document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("animation__right", "enabled:true");
+              }, 1000);
+           }, 2000);
+          }, 2000);
+          }, 1000);
+          }
+        
+          else if (news === true && event === true) {
+          event = false;
+          setTimeout(() => {
+            document
+                  .getElementById("portfolio-right-button-four")
+                  .setAttribute("animation__right", "enabled:false");
+                
+                document
+                  .getElementById("portfolio-left-button-four")
+                  .setAttribute("animation__left", "enabled:false");
+            
+                document
+                  .getElementById("portfolio-left-button-four")
+                  .setAttribute("animation__right", "enabled:true");
+                
+                document
+                  .getElementById("portfolio-right-button-four")
+                  .setAttribute("animation__left", "enabled:true");
+            setTimeout(() => {
+              document
+                  .getElementById("portfolio-right-button-four")
+                  .setAttribute("visible", "false");
+              document
+                  .getElementById("portfolio-left-button-four")
+                  .setAttribute("visible", "false");
+                  document
+            .getElementById("portfolio-panels-top-four")
+            .setAttribute("animation__up", "enabled:false");
+          document
+            .getElementById("portfolio-panels-top-four")
+            .setAttribute("animation__down", "enabled:true");
+          setTimeout(() => {
+            
+            document
+              .getElementById("portfolio-panels-top-four")
+              .setAttribute("visible", "false");
+              document
+                .getElementById("portfolio-panels-top-three")
+                .setAttribute("animation__down", "enabled:false");
+            
+              document
+                .getElementById("portfolio-panels-top-three")
+                .setAttribute("visible", "true");
+              document
+                .getElementById("portfolio-panels-top-three")
+                .setAttribute("animation__up", "enabled:true");
+              
+              setTimeout(() => {
+                document
+                  .getElementById("portfolio-left-button-three")
+                  .setAttribute("animation__right", "enabled:false");
+                  document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("animation__left", "enabled:false");
+                document
+                  .getElementById("portfolio-left-button-three")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-left-button-three")
+                  .setAttribute("animation__left", "enabled:true");
+                document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("animation__right", "enabled:true");
+              }, 1000);
+           }, 2000);
+          }, 2000);
+          }, 1000);
+          }
+          console.log(logo, menuStatus, news, event);
+        });
+
+        eventButton.addEventListener("click", function (evt) {
+          event = true;
+          console.log(logo, menuStatus, news, event);
+
+          if (event === true && logo === true) {
+          logo = false;
+          document
+            .getElementById("portfolio-panels-top-one")
+            .setAttribute("animation__up", "enabled:false");
+          document
+            .getElementById("portfolio-panels-top-one")
+            .setAttribute("animation__down", "enabled:true");
+          setTimeout(() => {
+            
+            document
+              .getElementById("portfolio-panels-top-one")
+              .setAttribute("visible", "false");
+              document
+                .getElementById("portfolio-panels-top-four")
+                .setAttribute("animation__down", "enabled:false");
+            
+              document
+                .getElementById("portfolio-panels-top-four")
+                .setAttribute("visible", "true");
+              document
+                .getElementById("portfolio-panels-top-four")
+                .setAttribute("animation__up", "enabled:true");
+              
+              setTimeout(() => {
+                document
+                  .getElementById("portfolio-right-button-four")
+                  .setAttribute("animation__left", "enabled:false");
+                  document
+                  .getElementById("portfolio-left-button-four")
+                  .setAttribute("animation__right", "enabled:false");
+                document
+                  .getElementById("portfolio-left-button-four")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-left-button-four")
+                  .setAttribute("animation__left", "enabled:true");
+                document
+                  .getElementById("portfolio-right-button-four")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-right-button-four")
+                  .setAttribute("animation__right", "enabled:true");
+              }, 1000);
+           }, 2000);
+          }
+        
+          else if (event === true && menuStatus === true) {
+          menuStatus = false;
+          setTimeout(() => {
+            document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("animation__right", "enabled:false");
+                
+                document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("animation__left", "enabled:false");
+            
+                document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("animation__right", "enabled:true");
+                
+                document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("animation__left", "enabled:true");
+            setTimeout(() => {
+              document
+                  .getElementById("portfolio-right-button")
+                  .setAttribute("visible", "false");
+              document
+                  .getElementById("portfolio-left-button")
+                  .setAttribute("visible", "false");
+                  document
+            .getElementById("portfolio-panels-top-two")
+            .setAttribute("animation__up", "enabled:false");
+          document
+            .getElementById("portfolio-panels-top-two")
+            .setAttribute("animation__down", "enabled:true");
+          setTimeout(() => {
+            
+            document
+              .getElementById("portfolio-panels-top-two")
+              .setAttribute("visible", "false");
+
+              document
+                .getElementById("portfolio-panels-top-four")
+                .setAttribute("animation__down", "enabled:false");
+              document
+                .getElementById("portfolio-panels-top-four")
+                .setAttribute("visible", "true");
+              document
+                .getElementById("portfolio-panels-top-four")
+                .setAttribute("animation__up", "enabled:true");
+              
+              setTimeout(() => {
+                document
+                  .getElementById("portfolio-left-button-four")
+                  .setAttribute("animation__right", "enabled:false");
+                  document
+                  .getElementById("portfolio-right-button-four")
+                  .setAttribute("animation__left", "enabled:false");
+                document
+                  .getElementById("portfolio-left-button-four")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-left-button-four")
+                  .setAttribute("animation__left", "enabled:true");
+                document
+                  .getElementById("portfolio-right-button-four")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-right-button-four")
+                  .setAttribute("animation__right", "enabled:true");
+              }, 1000);
+           }, 2000);
+          }, 2000);
+          }, 1000);
+          }
+        
+          else if (event === true && news === true) {
+          news = false;
+          setTimeout(() => {
+            document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("animation__right", "enabled:false");
+                
+                document
+                  .getElementById("portfolio-left-button-three")
+                  .setAttribute("animation__left", "enabled:false");
+            
+                document
+                  .getElementById("portfolio-left-button-three")
+                  .setAttribute("animation__right", "enabled:true");
+                
+                document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("animation__left", "enabled:true");
+            setTimeout(() => {
+              document
+                  .getElementById("portfolio-right-button-three")
+                  .setAttribute("visible", "false");
+              document
+                  .getElementById("portfolio-left-button-three")
+                  .setAttribute("visible", "false");
+                  document
+            .getElementById("portfolio-panels-top-three")
+            .setAttribute("animation__up", "enabled:false");
+          document
+            .getElementById("portfolio-panels-top-three")
+            .setAttribute("animation__down", "enabled:true");
+          setTimeout(() => {
+            
+            document
+              .getElementById("portfolio-panels-top-three")
+              .setAttribute("visible", "false");
+
+              document
+                .getElementById("portfolio-panels-top-four")
+                .setAttribute("animation__down", "enabled:false");
+              document
+                .getElementById("portfolio-panels-top-four")
+                .setAttribute("visible", "true");
+              document
+                .getElementById("portfolio-panels-top-four")
+                .setAttribute("animation__up", "enabled:true");
+              
+              setTimeout(() => {
+                document
+                  .getElementById("portfolio-right-button-four")
+                  .setAttribute("animation__left", "enabled:false");
+                  document
+                  .getElementById("portfolio-left-button-four")
+                  .setAttribute("animation__right", "enabled:false");
+                document
+                  .getElementById("portfolio-left-button-four")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-left-button-four")
+                  .setAttribute("animation__left", "enabled:true");
+                document
+                  .getElementById("portfolio-right-button-four")
+                  .setAttribute("visible", "true");
+                document
+                  .getElementById("portfolio-right-button-four")
+                  .setAttribute("animation__right", "enabled:true");
+              }, 1000);
+           }, 2000);
+          }, 2000);
+          }, 1000);
+          }
+          console.log(logo, menuStatus, news, event);
+        });
+
+
+        onDone();
+      };
+
+      const targetFound = (onDone) => {
+        
+        console.log(logo, menuStatus, news, event);
+
+        document
+            .getElementById("portfolio-panels-bottom-two")
+            .setAttribute("animation__up", "enabled:false");
+          document
+            .getElementById("portfolio-panels-bottom-two")
+            .setAttribute("visible", "true");
+          document
+            .getElementById("portfolio-panels-bottom-two")
+            .setAttribute("animation__down", "enabled:true");
+
+            
           showMenu();
         onDone();
       };
 
       const targetLost = (onDone) => {
+        console.log(logo, menuStatus, news, event);
         if (menuStatus === false) {
-          // //bottom one reset
-          // document
-          //   .getElementById("portfolio-panels-bottom-one")
-          //   .setAttribute("position", "0 0 -0.05");
-          // document
-          //   .getElementById("portfolio-panels-bottom-one")
-          //   .setAttribute("visible", "false");
-          // document
-          //   .getElementById("portfolio-panels-bottom-one")
-          //   .setAttribute("animation__down", "enabled:false");
-          // document
-          //   .getElementById("portfolio-panels-bottom-one")
-          //   .setAttribute("animation__up", "enabled:false");
-
+         
           //bottom two reset document
           document
             .getElementById("portfolio-panels-bottom-two")
@@ -265,19 +758,33 @@
             .getElementById("portfolio-panels-top-two")
             .setAttribute("animation__up", "enabled:false");
 
-          //top one reset document
+          //top three reset document
           document
-            .getElementById("portfolio-panels-top-one")
-            .setAttribute("position", "0 0 -0.05");
-          document
-            .getElementById("portfolio-panels-top-one")
-            .setAttribute("visible", "false");
-          document
-            .getElementById("portfolio-panels-top-one")
-            .setAttribute("animation__down", "enabled:false");
-          document
-            .getElementById("portfolio-panels-top-one")
-            .setAttribute("animation__up", "enabled:false");
+              .getElementById("portfolio-panels-top-three")
+              .setAttribute("position", "0 0 -0.05");
+            document
+              .getElementById("portfolio-panels-top-three")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-panels-top-three")
+              .setAttribute("animation__down", "enabled:false");
+            document
+              .getElementById("portfolio-panels-top-three")
+              .setAttribute("animation__up", "enabled:false");
+
+            //top four reset document
+            document
+              .getElementById("portfolio-panels-top-four")
+              .setAttribute("position", "0 0 -0.05");
+            document
+              .getElementById("portfolio-panels-top-four")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-panels-top-four")
+              .setAttribute("animation__down", "enabled:false");
+            document
+              .getElementById("portfolio-panels-top-four")
+              .setAttribute("animation__up", "enabled:false");
 
           //left and right arrow
           document
@@ -299,13 +806,50 @@
             .getElementById("portfolio-right-button")
             .setAttribute("animation__right", "enabled:false");
 
-          //profile list
-          document
-            .getElementById("portfolio-item0")
-            .setAttribute("visible", "true");
-          document
-            .getElementById("portfolio-item1")
-            .setAttribute("visible", "false");
+          
+
+            //panels item
+            document
+              .getElementById("portfolio-item0")
+              .setAttribute("visible", "true");
+            document
+              .getElementById("portfolio-item1")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-item2")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-item3")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-item4")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-item5")
+              .setAttribute("visible", "false");
+              document
+              .getElementById("portfolio-three-item0")
+              .setAttribute("visible", "true");
+            document
+              .getElementById("portfolio-three-item1")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-three-item2")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-four-item0")
+              .setAttribute("visible", "true");
+            document
+              .getElementById("portfolio-four-item1")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-four-item2")
+              .setAttribute("visible", "false");
+
+            menuStatus = false;
+            logo = false;
+            news = false;
+            event = false;
         }
         onDone();
       };
@@ -314,18 +858,7 @@
           this.el.addEventListener("targetFound", (event) => {
             console.log("target found");
             console.log(menuStatus);
-            document
-              .getElementById("portfolio-panels-bottom-one")
-              .setAttribute("position", "0 0 -0.05");
-            document
-              .getElementById("portfolio-panels-bottom-one")
-              .setAttribute("visible", "false");
-            document
-              .getElementById("portfolio-panels-bottom-one")
-              .setAttribute("animation__down", "enabled:false");
-            document
-              .getElementById("portfolio-panels-bottom-one")
-              .setAttribute("animation__up", "enabled:false");
+            
 
             //bottom two reset document
             document
@@ -355,18 +888,32 @@
               .getElementById("portfolio-panels-top-two")
               .setAttribute("animation__up", "enabled:false");
 
-            //top one reset document
+            //top three reset document
             document
-              .getElementById("portfolio-panels-top-one")
+              .getElementById("portfolio-panels-top-three")
               .setAttribute("position", "0 0 -0.05");
             document
-              .getElementById("portfolio-panels-top-one")
+              .getElementById("portfolio-panels-top-three")
               .setAttribute("visible", "false");
             document
-              .getElementById("portfolio-panels-top-one")
+              .getElementById("portfolio-panels-top-three")
               .setAttribute("animation__down", "enabled:false");
             document
-              .getElementById("portfolio-panels-top-one")
+              .getElementById("portfolio-panels-top-three")
+              .setAttribute("animation__up", "enabled:false");
+
+            //top four reset document
+            document
+              .getElementById("portfolio-panels-top-four")
+              .setAttribute("position", "0 0 -0.05");
+            document
+              .getElementById("portfolio-panels-top-four")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-panels-top-four")
+              .setAttribute("animation__down", "enabled:false");
+            document
+              .getElementById("portfolio-panels-top-four")
               .setAttribute("animation__up", "enabled:false");
 
             //left and right arrow
@@ -389,13 +936,48 @@
             .getElementById("portfolio-right-button")
             .setAttribute("animation__right", "enabled:false");
 
-            //profile list
+            //panels item
             document
               .getElementById("portfolio-item0")
               .setAttribute("visible", "true");
             document
               .getElementById("portfolio-item1")
               .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-item2")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-item3")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-item4")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-item5")
+              .setAttribute("visible", "false");
+              document
+              .getElementById("portfolio-three-item0")
+              .setAttribute("visible", "true");
+            document
+              .getElementById("portfolio-three-item1")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-three-item2")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-four-item0")
+              .setAttribute("visible", "true");
+            document
+              .getElementById("portfolio-four-item1")
+              .setAttribute("visible", "false");
+            document
+              .getElementById("portfolio-four-item2")
+              .setAttribute("visible", "false");
+
+            menuStatus = false;
+            logo = false;
+            news = false;
+            event = false;
 
             showAvatar(() => {
               document
@@ -417,6 +999,63 @@
         },
       });
     </script>
+
+<script>
+  function ganeshPhone() {
+    window.location.href ="tel:+918872887277";
+  }
+  function ganeshMail() {
+    window.location.href ="mailto:grajagopal@monolith.asia?&body=Hello Ganesh,";
+  }
+  function ganeshLinkedin() {
+    window.location.href ="https://www.linkedin.com/in/ganesh-r-82a05293/";
+  }
+  function jagadeeshPhone() {
+    window.location.href ="tel:+918939427788";
+  }
+  function jagadeeshMail() {
+    window.location.href ="mailto:jvinayagam@monolith.asia?&body=Hello Jagadeesh,";
+  }
+  function jagadeeshLinkedin() {
+    window.location.href ="https://www.linkedin.com/in/jagadeesh-v-364b4a16b/";
+  }
+  function hariPhone() {
+    window.location.href ="tel:+918838422393";
+  }
+  function hariMail() {
+    window.location.href ="mailto:hsenthilkumar@monolith.asia?&body=Hello Hariharan,";
+  }
+  function hariLinkedin() {
+    window.location.href ="https://www.linkedin.com/in/hariharan-s-7819b9148/";
+  }
+  function mowleePhone() {
+    window.location.href ="tel:+919791767427";
+  }
+  function mowleeMail() {
+    window.location.href ="mailto:malagesan@monolith.asia?&body=Hello Mowleeswar,";
+  }
+  function mowleeLinkedin() {
+    window.location.href ="https://www.linkedin.com/in/mowleeswar/overlay/contact-info/";
+  }
+  function ashokPhone() {
+    window.location.href ="tel:+919884497879";
+  }
+  function ashokMail() {
+    window.location.href ="mailto:asankaran@monolith.asia?&body=Hello Ashok,";
+  }
+  function ashokLinkedin() {
+    window.location.href ="https://www.linkedin.com/in/ashok-sankaran-abb5a0a7/";
+  }
+  function madhuPhone() {
+    window.location.href ="tel:+919840998841";
+  }
+  function madhuMail() {
+    window.location.href ="mailto:mkamaraj@monolith.asia?&body=Hello Madhumitha,";
+  }
+  function madhuLinkedin() {
+    window.location.href ="https://www.linkedin.com/in/madhumitha-kamaraj-690850204/";
+  }
+</script>
     <style>
       #example-scanning-overlay {
         display: flex;
@@ -492,13 +1131,13 @@
   <body>
     <div id="example-scanning-overlay" class="hidden">
       <div class="inner">
-        <img src="monolith.jpeg" />
+        <img src="pic/thumb.png" />
         <div class="scanline"></div>
       </div>
     </div>
 
     <a-scene
-      mindar-image="imageTargetSrc: monolith.mind; uiScanning: #example-scanning-overlay; filterMinCF:0.01; filterBeta: 100; warmupTolerance: 2; missTolerance: 2;"
+      mindar-image="imageTargetSrc: targets/board-target.mind; uiScanning: #example-scanning-overlay; filterMinCF:0.01; filterBeta: 100; warmupTolerance: 2; missTolerance: 2;"
       vr-mode-ui="enabled: false"
       embedded
       color-space="sRGB"
@@ -507,29 +1146,13 @@
       render-order="layer1, layer2, layer3"
     >
       <asset>
-        <img id="icon-web" src="img/web.png" />
-        <img id="icon-email" src="img/email.png" />
-        <img id="card" src="img/card.png" />
-        <img id="icon-left" src="img/left.png" />
-        <img id="icon-right" src="img/right.png" />
-        <img id="portfolio-1" src="img/credit-card-1.png" />
-        <img id="portfolio-2" src="img/credit-card-2.png" />
 
-        <a-asset-item
+        <!-- <a-asset-item
           id="avatarModel"
           src="assets/ethereum_logo.glb"
-        ></a-asset-item>
+        ></a-asset-item> -->
 
-        <img id="call-icon" src="ico/call-2.png" />
-        <img id="email-icon" src="ico/email-3.png" />
-        <img id="linkedin-icon" src="ico/linkedin.png" />
-        <img id="profile-icon" src="ico/profile.png" />
-        <img id="profile-icon-two" src="ico/woman.png" />
-        <img id="left-icon" src="ico/previous-2.png" />
-        <img id="right-icon" src="ico/previous-2-copy.png" />
-        <img id="menu-icon" src="ico/menu-button.png" />
-        <img id="logo-icon" src="ico/monolith-img.png" />
-
+        <img id="menu-icon" src="pic/menu-button.png" />
         <img id="center-icon" src="pic/center.png" />
         <img id="anim-icon" src="pic/anim.png" />
         <img id="video-icon" src="pic/video.png" />
@@ -539,8 +1162,24 @@
         <img id="top-icon" src="pic/top.png" />
         <img id="mot-icon" src="pic/mot.png" />
         <img id="ganesh-icon" src="pic/ganesh.png" />
+        <img id="jagadeesh-icon" src="pic/jagadeesh.png" />
+        <img id="madhu-icon" src="pic/madhu.png" />
+        <img id="mowlee-icon" src="pic/mowlee.png" />
+        <img id="hari-icon" src="pic/hari.png" />
+        <img id="ashok-icon" src="pic/ashok.png" />
         <img id="arrow-icon" src="pic/arrow.png" />
         <img id="layout-icon" src="pic/layout.png" />
+        <img id="phone-icon" src="pic/phone.png" />
+        <img id="mail-icon" src="pic/mail.png" />
+        <img id="in-icon" src="pic/in.png" />
+        <img id="newsletter-icon" src="pic/newsletter.png" />
+        <img id="event-icon" src="pic/event.png" />
+        <img id="team-icon" src="pic/team.png" />
+        <img id="dashboard-icon" src="pic/dashboard.png" />
+        <img id="background-icon" src="pic/clip.png" />
+        <img id="bg-icon" src="pic/topbg.png" />
+        <img id="thumb-icon" src="pic/thumb.png" />
+        <img id="cta-icon" src="pic/cta-button.png" />
       </asset>
 
       <a-camera
@@ -554,7 +1193,7 @@
       <!--Root-->
       <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
         <a-plane
-          src="monolith.jpeg"
+          src="#background-icon"
           position="0 0 0"
           height="1.5"
           width="1"
@@ -564,46 +1203,527 @@
         <!--Header-->
         <a-entity
           visible="false"
+          id="portfolio-panels-top-four"
+          position="0 0 -0.05"
+          animation__down="
+          property:position;
+          dur:2000;
+          from:0 0.45 -0.05;
+          to:0 -0.05 -0.05;
+          loop:1;
+          enabled:false"
+          animation__up="
+          property:position;
+          dur:2000;
+          from:0 -0.05 -0.05;
+          to:0 0.45 -0.05;
+          loop:1;
+          enabled:false"
+          render-order="layer2"
+        >
+          
+
+          <a-entity id="portfolio-four-item0" visible = true>
+            
+            <a-image
+            src="#bg-icon"
+            position="0 0 0.06"
+            height="0.45"
+            width="0.80"
+            rotation="0 0 0"
+            ></a-image>
+
+            <a-text
+              id="events"
+              value="Upcoming Events"
+              color="white"
+              align="center"
+              width="1.2"
+              position="0 0.17 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+            <a-text
+              id="topic"
+              value="Event 1"
+              color="white"
+              width="1"
+              align="center"
+              position="0 0.1 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+              <a-image
+              id="event-one-button"
+              class="clickable"
+              src="#cta-icon"
+              position="0.02 -0.13 0.08"
+              height="0.10"
+              width="0.40"
+              align="center"
+              onclick="ganeshPhone()"
+            ></a-image>                  
+          </a-entity>
+
+          <a-entity id="portfolio-four-item1" visible = false>
+            
+            
+            <a-image
+            src="#bg-icon"
+            position="0 0 0.06"
+            height="0.45"
+            width="0.80"
+            rotation="0 0 0"
+            ></a-image>
+
+            <a-text
+              id="events"
+              value="Upcoming Events"
+              color="white"
+              align="center"
+              width="1.2"
+              position="0 0.17 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+            <a-text
+              id="topic"
+              value="Event 2"
+              color="white"
+              width="1"
+              align="center"
+              position="0 0.1 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+              <a-image
+              id="event-two-button"
+              class="clickable"
+              src="#cta-icon"
+              position="0.02 -0.13 0.08"
+              height="0.10"
+              width="0.40"
+              align="center"
+              onclick="ganeshPhone()"
+            ></a-image>        
+          </a-entity>
+
+          <a-entity id="portfolio-four-item2" visible = false>
+            
+            <a-image
+            src="#bg-icon"
+            position="0 0 0.06"
+            height="0.45"
+            width="0.80"
+            rotation="0 0 0"
+            ></a-image>
+
+            <a-text
+              id="events"
+              value="Upcoming Events"
+              color="white"
+              align="center"
+              width="1.2"
+              position="0 0.17 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+            <a-text
+              id="topic"
+              value="Event 3"
+              color="white"
+              width="1"
+              align="center"
+              position="0 0.1 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+              <a-image
+              id="event-three-button"
+              class="clickable"
+              src="#cta-icon"
+              position="0.02 -0.13 0.08"
+              height="0.10"
+              width="0.40"
+              align="center"
+              onclick="ganeshPhone()"
+            ></a-image>                  
+          </a-entity>
+
+          
+          
+          <a-image
+            visible="false"
+            id="portfolio-left-button-four"
+            class="clickable"
+            src="#arrow-icon"
+            rotation="0 0 180"
+            position="-0.3 0 0.06"
+            height="0.15"
+            width="0.15"
+            animation__left="
+            property:position;
+            dur:2000;
+            from:-0.3 0 0;
+            to:-0.6 0 0;
+            loop:1;
+            enabled:false"
+            animation__right="
+            property:position;
+            dur:2000;
+            from:-0.6 0 0;
+            to:-0.3 0 0;
+            loop:1;
+            enabled:false"
+            
+          ></a-image>
+
+          <a-image
+            visible="false"
+            id="portfolio-right-button-four"
+            class="clickable"
+            src="#arrow-icon"
+            position="0.3 0 0.06"
+            height="0.15"
+            width="0.15"
+            animation__right="
+            property:position;
+            dur:2000;
+            from:0.3 0 0;
+            to:0.6 0 0;
+            loop:1;
+            enabled:false"
+            animation__left="
+            property:position;
+            dur:2000;
+            from:0.6 0 0;
+            to:0.3 0 0;
+            loop:1;
+            enabled:false"
+            
+          ></a-image>
+
+        </a-entity>
+
+        <a-entity
+          visible="false"
+          id="portfolio-panels-top-three"
+          position="0 0 -0.05"
+          animation__down="
+          property:position;
+          dur:2000;
+          from:0 0.45 -0.05;
+          to:0 -0.05 -0.05;
+          loop:1;
+          enabled:false"
+          animation__up="
+          property:position;
+          dur:2000;
+          from:0 -0.05 -0.05;
+          to:0 0.45 -0.05;
+          loop:1;
+          enabled:false"
+          render-order="layer2"
+        >
+          
+
+          <a-entity id="portfolio-three-item0" visible = true>
+            
+            <a-image
+            src="#bg-icon"
+            position="0 0 0.06"
+            height="0.45"
+            width="0.80"
+            rotation="0 0 0"
+            ></a-image>
+
+            <a-text
+              id="newsletter"
+              value="Newsletter"
+              color="white"
+              align="center"
+              width="1.2"
+              position="0 0.17 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+            <a-text
+              id="topic"
+              value="Content 1"
+              color="white"
+              width="1"
+              align="center"
+              position="0 0.1 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+              <a-image
+              id="content-one-button"
+              class="clickable"
+              src="#cta-icon"
+              position="0.02 -0.13 0.08"
+              height="0.10"
+              width="0.40"
+              align="center"
+              onclick="ganeshPhone()"
+            ></a-image>
+            
+          </a-entity>
+
+          <a-entity id="portfolio-three-item1" visible = false>
+            
+            
+            <a-image
+            src="#bg-icon"
+            position="0 0 0.06"
+            height="0.45"
+            width="0.80"
+            rotation="0 0 0"
+            ></a-image>
+
+            <a-text
+              id="newsletter"
+              value="Newsletter"
+              color="white"
+              align="center"
+              width="1.2"
+              position="0 0.17 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+            <a-text
+              id="topic"
+              value="Content 2"
+              color="white"
+              width="1"
+              align="center"
+              position="0 0.1 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+              <a-image
+              id="content-two-button"
+              class="clickable"
+              src="#cta-icon"
+              position="0.02 -0.13 0.08"
+              height="0.10"
+              width="0.40"
+              align="center"
+              onclick="ganeshPhone()"
+            ></a-image>
+          </a-entity>
+
+          <a-entity id="portfolio-three-item2" visible = false>
+            
+            <a-image
+            src="#bg-icon"
+            position="0 0 0.06"
+            height="0.45"
+            width="0.80"
+            rotation="0 0 0"
+            ></a-image>
+
+            <a-text
+              id="newsletter"
+              value="Newsletter"
+              color="white"
+              align="center"
+              width="1.2"
+              position="0 0.17 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+            <a-text
+              id="topic"
+              value="Content 3"
+              color="white"
+              width="1"
+              align="center"
+              position="0 0.1 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+              <a-image
+              id="content-three-button"
+              class="clickable"
+              src="#cta-icon"
+              position="0.02 -0.13 0.08"
+              height="0.10"
+              width="0.40"
+              align="center"
+              onclick="ganeshPhone()"
+            ></a-image>
+          </a-entity>
+
+          
+          <a-image
+            visible="false"
+            id="portfolio-left-button-three"
+            class="clickable"
+            src="#arrow-icon"
+            rotation="0 0 180"
+            position="-0.3 0 0.06"
+            height="0.15"
+            width="0.15"
+            animation__left="
+            property:position;
+            dur:2000;
+            from:-0.3 0 0;
+            to:-0.6 0 0;
+            loop:1;
+            enabled:false"
+            animation__right="
+            property:position;
+            dur:2000;
+            from:-0.6 0 0;
+            to:-0.3 0 0;
+            loop:1;
+            enabled:false"
+            
+          ></a-image>
+
+          <a-image
+            visible="false"
+            id="portfolio-right-button-three"
+            class="clickable"
+            src="#arrow-icon"
+            position="0.3 0 0.06"
+            height="0.15"
+            width="0.15"
+            animation__right="
+            property:position;
+            dur:2000;
+            from:0.3 0 0;
+            to:0.6 0 0;
+            loop:1;
+            enabled:false"
+            animation__left="
+            property:position;
+            dur:2000;
+            from:0.6 0 0;
+            to:0.3 0 0;
+            loop:1;
+            enabled:false"
+            
+          ></a-image>
+
+        </a-entity>
+
+        <a-entity
+          visible="false"
           id="portfolio-panels-top-two"
           position="0 0 -0.05"
           animation__down="
           property:position;
           dur:2000;
           from:0 0.45 -0.05;
-          to:0 -0.1 -0.05;
+          to:0 -0.05 -0.05;
           loop:1;
           enabled:false"
           animation__up="
           property:position;
           dur:2000;
-          from:0 -0.1 -0.05;
+          from:0 -0.05 -0.05;
           to:0 0.45 -0.05;
           loop:1;
           enabled:false"
-          render-order="layer1"
+          render-order="layer2"
         >
-          <a-image
+          
+
+          <a-entity id="portfolio-item0" visible = true>
+            
+            <a-image
             src="#layout-icon"
             position="0 0 0.06"
             height="0.45"
-            width="0.75"
+            width="0.80"
             rotation="0 0 0"
-          ></a-image>
+            ></a-image>
 
-          <a-entity>
             <a-image
-              src="#profile-icon"
+              src="#ganesh-icon"
               width="0.20"
               height="0.20"
-              position="-0.3 0.1 0.03"
+              position="-0.28 0.05 0.08"
+            ></a-image>
+
+            <a-text
+              id="username"
+              value="Ganesh Rajagopal"
+              color="white"
+              width="1"
+              position="-0.15 0.10 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+            <a-text
+              id="designation"
+              class="clickable"
+              value="AVGC Projects"
+              color="white"
+              width="1"
+              position="-0.15 0 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+              <a-image
+              id="call-button"
+              class="clickable"
+              src="#phone-icon"
+              position="-0.2 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="ganeshPhone()"
+            ></a-image>
+  
+  
+            <a-image
+              id="email-button"
+              class="clickable"
+              src="#mail-icon"
+              position="0 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="ganeshMail()"
+            ></a-image>
+  
+  
+            <a-image
+              id="linkedin-button"
+              class="clickable"
+              src="#in-icon"
+              position="0.2 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="ganeshLinkedin()"
+            ></a-image>
+          </a-entity>
+
+          <a-entity id="portfolio-item1" visible = false>
+            
+            
+            <a-image
+            src="#layout-icon"
+            position="0 0 0.06"
+            height="0.45"
+            width="0.80"
+            rotation="0 0 0"
+            ></a-image>
+
+            <a-image
+              src="#jagadeesh-icon"
+              width="0.20"
+              height="0.20"
+              position="-0.28 0.05 0.08"
             ></a-image>
 
             <a-text
               id="username"
               value="Jagadeesh Vinayagam"
-              color="black"
+              color="white"
               width="1"
-              position="-0.15 0.15 0.03"
+              position="-0.15 0.10 0.08"
               material="opacity: 0.5"
             ></a-text>
 
@@ -611,273 +1731,334 @@
               id="designation"
               class="clickable"
               value="XR Developer"
-              color="black"
+              color="white"
               width="1"
-              position="-0.15 0.05 0.03"
+              position="-0.15 0 0.08"
               material="opacity: 0.5"
             ></a-text>
-          </a-entity>
 
-          <a-image
-            id="call-button"
-            class="clickable"
-            src="#call-icon"
-            position="-0.3 -0.15 0.04"
-            height="0.15"
-            width="0.15"
-            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
-          ></a-image>
-
-          <a-image
-            id="email-button"
-            class="clickable"
-            src="#email-icon"
-            position="0 -0.15 0.04"
-            height="0.15"
-            width="0.15"
-            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
-          ></a-image>
-
-          <a-image
-            id="linkedin-button"
-            class="clickable"
-            src="#linkedin-icon"
-            position="0.3 -0.15 0.04"
-            height="0.15"
-            width="0.15"
-            animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
-          ></a-image>
-
-          <!-- <a-entity id="portfolio-item0" visible="true">
             <a-image
+              id="call-button"
               class="clickable"
-              src="#portfolio-1"
-              alpha-test="0.5"
-              position="0 0 0"
-              height=".75"
-              width=".75"
-            >
-            </a-image>
-          </a-entity>
-
-          <a-entity id="portfolio-item1" visible="false">
+              src="#phone-icon"
+              position="-0.2 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="jagadeeshPhone()"
+            ></a-image>
+  
+  
             <a-image
+              id="email-button"
               class="clickable"
-              src="#portfolio-2"
-              alpha-test="0.5"
-              position="0 0 0"
-              height=".75"
-              width=".75"
-            >
-            </a-image>
+              src="#mail-icon"
+              position="0 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="jagadeeshMail()"
+            ></a-image>
+  
+  
+            <a-image
+              id="linkedin-button"
+              class="clickable"
+              src="#in-icon"
+              position="0.2 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="jagadeeshLinkedin()"
+            ></a-image>
           </a-entity>
 
-          <a-image
-            visible="false"
-            id="portfolio-left-button"
-            class="clickable"
-            src="#icon-left"
-            position="-0.5 0 0"
-            height="0.15"
-            width="0.15"
-          ></a-image>
-
-          <a-image
-            visible="false"
-            id="portfolio-right-button"
-            class="clickable"
-            src="#icon-right"
-            position="0.5 0 0"
-            height="0.15"
-            width="0.15"
-          ></a-image> -->
-        </a-entity>
-        <a-entity
-          visible="false"
-          id="portfolio-panels-top-one"
-          position="0 0 -0.05"
-          animation__down="
-        property:position;
-        dur:2000;
-        from:0 0.45 -0.05;
-        to:0 -0.1 -0.05;
-        loop:1;
-        enabled:false"
-          animation__up="
-        property:position;
-        dur:2000;
-        from:0 -0.1 -0.05;
-        to:0 0.45 -0.05;
-        loop:1;
-        enabled:false"
-        render-order="layer2"
-        >
-          <a-image
-            src="#top-icon"
-            position="0 0 0.1"
-            height="0.45"
-            width="0.45"
-            rotation="0 0 0"
-          ></a-image>
-
-          
-          <!-- <a-entity id="portfolio-item0" visible="true">
-          <a-image
-            class="clickable"
-            src="#portfolio-1"
-            alpha-test="0.5"
-            position="0 0 0"
-            height=".75"
-            width=".75"
-          >
-          </a-image>
-        </a-entity>
-
-        <a-entity id="portfolio-item1" visible="false">
-          <a-image
-            class="clickable"
-            src="#portfolio-2"
-            alpha-test="0.5"
-            position="0 0 0"
-            height=".75"
-            width=".75"
-          >
-          </a-image>
-        </a-entity>
-
-        <a-image
-          visible="false"
-          id="portfolio-left-button"
-          class="clickable"
-          src="#icon-left"
-          position="-0.5 0 0"
-          height="0.15"
-          width="0.15"
-        ></a-image>
-
-        <a-image
-          visible="false"
-          id="portfolio-right-button"
-          class="clickable"
-          src="#icon-right"
-          position="0.5 0 0"
-          height="0.15"
-          width="0.15"
-        ></a-image> -->
-        </a-entity>
-
-        <!--Footer-->
-        <a-entity
-          visible="true"
-          id="portfolio-panels-bottom-two"
-          position="0 0 -0.05"
-          animation__down="
-         property:position;
-         dur:2000;
-         from:0 -0.05 -0.05;
-         to:0 -0.52 -0.05;
-         loop:1;
-         enabled:false"
-         animation__up="
-          property:position;
-          dur:2000;
-          from:0 -0.52 -0.05;
-          to:0 -0.05 -0.05;
-          loop:1;
-          enabled:false"
-          render-order="layer2"
-        >
-          <!-- <a-plane
-            color="#FFFF"
+          <a-entity id="portfolio-item2" visible = false>
+            
+            <a-image
+            src="#layout-icon"
             position="0 0 0.06"
             height="0.45"
-            width="1"
+            width="0.80"
             rotation="0 0 0"
-          ></a-plane> -->
+            ></a-image>
 
-          <!-- <a-text
-            id="infotext"
-            value="MEET OUR TEAM"
-            color="white"
-            align="center"
-            width="1"
-            position="0 0.13 0.1"
-            material="opacity: 0.5"
-          ></a-text> -->
+            <a-image
+              src="#hari-icon"
+              width="0.20"
+              height="0.20"
+              position="-0.28 0.05 0.08"
+            ></a-image>
 
-          <a-image
-            id="infotext"
-            src="#mot-icon"
-            align="center"
-            width="0.6"
-            height="0.1"
-            position="0 0.13 0.1"
-            material="opacity: 1"
-          ></a-image>
+            <a-text
+              id="username"
+              value="Hariharan Senthilkumar"
+              color="white"
+              width="1"
+              position="-0.15 0.10 0.08"
+              material="opacity: 0.5"
+            ></a-text>
 
-          <a-entity id="portfolio-item0" visible="true">
+            <a-text
+              id="designation"
+              class="clickable"
+              value="XR Developer"
+              color="white"
+              width="1"
+              position="-0.15 0 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+              <a-image
+              id="call-button"
+              class="clickable"
+              src="#phone-icon"
+              position="-0.2 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="hariPhone()"
+            ></a-image>
+  
+  
+            <a-image
+              id="email-button"
+              class="clickable"
+              src="#mail-icon"
+              position="0 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="hariMail()"
+            ></a-image>
+  
+  
+            <a-image
+              id="linkedin-button"
+              class="clickable"
+              src="#in-icon"
+              position="0.2 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="hariLinkedin()"
+            ></a-image>
+          </a-entity>
+
+          <a-entity id="portfolio-item3" visible = false>
             
+            
+            <a-image
+            src="#layout-icon"
+            position="0 0 0.06"
+            height="0.45"
+            width="0.80"
+            rotation="0 0 0"
+            ></a-image>
 
             <a-image
-              id="ganesh-button"
+              src="#mowlee-icon"
+              width="0.20"
+              height="0.20"
+              position="-0.28 0.05 0.08"
+            ></a-image>
+
+            <a-text
+              id="username"
+              value="Mowleeswar Alagesan"
+              color="white"
+              width="1"
+              position="-0.15 0.10 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+            <a-text
+              id="designation"
               class="clickable"
-              src="#ganesh-icon"
-              position="-0.25 -0.05 0.1"
-              height="0.25"
-              width="0.25"
-              ></a-image>
+              value="Technical Artist"
+              color="white"
+              width="1"
+              position="-0.15 0 0.08"
+              material="opacity: 0.5"
+            ></a-text>
 
             <a-image
-              id="profile-two-button"
+              id="call-button"
               class="clickable"
-              src="#profile-icon"
-              position="0 -0.05 0.1"
-              height="0.15"
-              width="0.15"
-              ></a-image>
-
+              src="#phone-icon"
+              position="-0.2 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="mowleePhone()"
+            ></a-image>
+  
+  
             <a-image
-              id="profile-three-button"
+              id="email-button"
               class="clickable"
-              src="#profile-icon"
-              position="0.25 -0.05 0.1"
-              height="0.15"
-              width="0.15"
-              ></a-image>
+              src="#mail-icon"
+              position="0 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="mowleeMail()"
+            ></a-image>
+  
+  
+            <a-image
+              id="linkedin-button"
+              class="clickable"
+              src="#in-icon"
+              position="0.2 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="mowleeLinkedin()"
+            ></a-image>
           </a-entity>
 
-          <a-entity id="portfolio-item1" visible="false">
+          <a-entity id="portfolio-item4" visible = false>
+            
             <a-image
-              id="profile-one-button"
-              class="clickable"
-              src="#profile-icon-two"
-              position="-0.3 -0.05 0.06"
-              height="0.15"
-              width="0.15"
-              animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+            src="#layout-icon"
+            position="0 0 0.06"
+            height="0.45"
+            width="0.80"
+            rotation="0 0 0"
             ></a-image>
 
             <a-image
-              id="profile-two-button"
-              class="clickable"
-              src="#profile-icon-two"
-              position="0 -0.05 0.06"
-              height="0.15"
-              width="0.15"
-              animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+              src="#ashok-icon"
+              width="0.20"
+              height="0.20"
+              position="-0.28 0.05 0.08"
             ></a-image>
 
-            <a-image
-              id="profile-three-button"
+            <a-text
+              id="username"
+              value="Ashok Sankaran"
+              color="white"
+              width="1"
+              position="-0.15 0.10 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+            <a-text
+              id="designation"
               class="clickable"
-              src="#profile-icon-two"
-              position="0.3 -0.05 0.06"
-              height="0.15"
-              width="0.15"
-              animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+              value="Senior Multimedia "
+              color="white"
+              width="0.9"
+              position="-0.15 0.03 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+            <a-text
+              id="designation"
+              class="clickable"
+              value="Consultant"
+              color="white"
+              width="0.9"
+              position="-0.15 -0.02 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+              <a-image
+              id="call-button"
+              class="clickable"
+              src="#phone-icon"
+              position="-0.2 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="ashokPhone()"
+            ></a-image>
+  
+  
+            <a-image
+              id="email-button"
+              class="clickable"
+              src="#mail-icon"
+              position="0 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="ashokMail()"
+            ></a-image>
+  
+  
+            <a-image
+              id="linkedin-button"
+              class="clickable"
+              src="#in-icon"
+              position="0.2 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="ashokLinkedin()"
             ></a-image>
           </a-entity>
 
+          <a-entity id="portfolio-item5" visible = false>
+            
+            
+            <a-image
+            src="#layout-icon"
+            position="0 0 0.06"
+            height="0.45"
+            width="0.80"
+            rotation="0 0 0"
+            ></a-image>
+
+            <a-image
+              src="#madhu-icon"
+              width="0.20"
+              height="0.20"
+              position="-0.28 0.05 0.08"
+            ></a-image>
+
+            <a-text
+              id="username"
+              value="Madhumitha Kamaraj"
+              color="white"
+              width="1"
+              position="-0.15 0.10 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+            <a-text
+              id="designation"
+              class="clickable"
+              value="Jr. Graphic Designer"
+              color="white"
+              width="1"
+              position="-0.15 0 0.08"
+              material="opacity: 0.5"
+            ></a-text>
+
+            <a-image
+              id="call-button"
+              class="clickable"
+              src="#phone-icon"
+              position="-0.2 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="madhuPhone()"
+            ></a-image>
+  
+  
+            <a-image
+              id="email-button"
+              class="clickable"
+              src="#mail-icon"
+              position="0 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="madhuMail()"
+            ></a-image>
+  
+  
+            <a-image
+              id="linkedin-button"
+              class="clickable"
+              src="#in-icon"
+              position="0.2 -0.13 0.08"
+              height="0.12"
+              width="0.12"
+              onclick="madhuLinkedin()"
+            ></a-image>
+          </a-entity>
+
+          
           <a-image
             visible="false"
             id="portfolio-left-button"
@@ -894,6 +2075,13 @@
             to:-0.6 0 0;
             loop:1;
             enabled:false"
+            animation__right="
+            property:position;
+            dur:2000;
+            from:-0.6 0 0;
+            to:-0.3 0 0;
+            loop:1;
+            enabled:false"
             
           ></a-image>
 
@@ -904,56 +2092,119 @@
             src="#arrow-icon"
             position="0.3 0 0.06"
             height="0.15"
-            width="0.15"animation__right="
+            width="0.15"
+            animation__right="
             property:position;
             dur:2000;
             from:0.3 0 0;
             to:0.6 0 0;
             loop:1;
             enabled:false"
+            animation__left="
+            property:position;
+            dur:2000;
+            from:0.6 0 0;
+            to:0.3 0 0;
+            loop:1;
+            enabled:false"
             
           ></a-image>
+
         </a-entity>
 
         <a-entity
           visible="false"
-          id="portfolio-panels-bottom-one"
+          id="portfolio-panels-top-one"
+          position="0 0 -0.05"
+          animation__down="
+        property:position;
+        dur:2000;
+        from:0 0.45 -0.05;
+        to:0 -0.05 -0.05;
+        loop:1;
+        enabled:false"
+          animation__up="
+        property:position;
+        dur:2000;
+        from:0 -0.05 -0.05;
+        to:0 0.45 -0.05;
+        loop:1;
+        enabled:false"
+        render-order="layer2"
+        >
+          <a-image
+            src="#top-icon"
+            position="0 0 0.1"
+            height="0.45"
+            width="0.45"
+            rotation="0 0 0"
+          ></a-image>
+
+        </a-entity>
+
+        <!--Footer-->
+        <a-entity
+          visible="true"
+          id="portfolio-panels-bottom-two"
           position="0 0 -0.05"
           animation__down="
           property:position;
           dur:2000;
-          from:0 0 -0.05;
-          to:0 -0.55 -0.05;
+          from:0 -0.05 -0.05;
+          to:0 -0.52 -0.05;
           loop:1;
           enabled:false"
           animation__up="
           property:position;
           dur:2000;
-          from:0 -0.55 -0.05;
-          to:0 0 -0.05;
+          from:0 -0.52 -0.05;
+          to:0 -0.05 -0.05;
           loop:1;
           enabled:false"
+          render-order="layer2"
         >
-          <a-plane
-            color="#FFFF"
-            position="0 0 0"
-            height="0.45"
-            width="1"
-            rotation="0 0 0"
-          ></a-plane>
 
-          <a-text
+          <a-image
             id="infotext"
-            value="Meet Our Team"
-            color="black"
+            src="#dashboard-icon"
             align="center"
-            width="1"
-            position="0 0.13 0.04"
-            material="opacity: 0.5"
-          ></a-text>
+            width="0.8"
+            height="0.1"
+            position="0 0.13 0.1"
+            material="opacity: 1"
+          ></a-image>
 
-          <a-entity id="portfolio-item" visible="true">
             <a-image
+              id="team-button"
+              class="clickable"
+              src="#team-icon"
+              position="-0.3 -0.05 0.1"
+              height="0.25"
+              width="0.25"
+              ></a-image>
+
+            <a-image
+              id="newsletter-button"
+              class="clickable"
+              src="#newsletter-icon"
+              position="0 -0.05 0.1"
+              height="0.25"
+              width="0.25"
+              ></a-image>
+
+            <a-image
+              id="event-button"
+              class="clickable"
+              src="#event-icon"
+              position="0.3 -0.05 0.1"
+              height="0.25"
+              width="0.25"
+              ></a-image>
+          
+        </a-entity>
+
+
+            <!-- <a-image
               id="menu-button"
               class="clickable"
               src="#menu-icon"
@@ -961,9 +2212,7 @@
               height="0.15"
               width="0.45"
               animation="property: scale; to: 1.2 1.2 1.2; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
-            ></a-image>
-          </a-entity>
-        </a-entity>
+            ></a-image> -->
 
         <!--Middle-->
         <!-- <a-entity
@@ -975,6 +2224,14 @@
           animation-mixer="clip:Static Pose; loop:infinite;"
         ></a-entity> -->
 
+        <!-- <a-entity
+          id="avatar"
+          rotation="90 0 0"
+          position="0 -0.012 0"
+          scale="5 5 5"
+          gltf-model="#girlModel"
+          animation-mixer="clip:*; loop:infinite;"
+        ></a-entity> -->
         <a-entity
         position="0 -0.05 0"
         geometry="primitive: box;
@@ -983,7 +2240,7 @@
         width:1;
         rotation:0 0 0
       "
-        material="color:red; opacity:0.5;"
+        material="color:red; opacity:0;"
         render-order="layer1"
       ></a-entity>
 
@@ -1036,21 +2293,6 @@
           ></a-image>
         </a-entity>
         </a-entity>
-
-        
-
-        <!--Info-->>
-        <!-- <a-text
-          id="text"
-          class="clickable"
-          value=""
-          color="black"
-          align="center"
-          width="1"
-          position="0 -0.6 0"
-          geometry="primitive:plane; height: 0.1; width: 1;"
-          material="opacity: 0.5"
-        ></a-text> -->
       </a-entity>
     </a-scene>
   </body>
