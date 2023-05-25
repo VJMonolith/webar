@@ -42,14 +42,169 @@
         const eventleftButton = document.querySelector("#portfolio-left-button-four");
         const eventrightButton = document.querySelector("#portfolio-right-button-four");
 
-        let currentItem = 0;
+        
+        const ganeshphoneButton = document.querySelector("#ganesh-call-button");
+        const ganeshemailButton = document.querySelector("#ganesh-email-button");
+        const ganeshlinkedinButton = document.querySelector("#ganesh-linkedin-button");
+        
+        const jagaphoneButton = document.querySelector("#jaga-call-button");
+        const jagaemailButton = document.querySelector("#jaga-email-button");
+        const jagalinkedinButton = document.querySelector("#jaga-linkedin-button");
+
+        const hariphoneButton = document.querySelector("#hari-call-button");
+        const hariemailButton = document.querySelector("#hari-email-button");
+        const harilinkedinButton = document.querySelector("#hari-linkedin-button");
+
+        const mowleephoneButton = document.querySelector("#mowlee-call-button");
+        const mowleeemailButton = document.querySelector("#mowlee-email-button");
+        const mowleelinkedinButton = document.querySelector("#mowlee-linkedin-button");
+
+        const ashokphoneButton = document.querySelector("#ashok-call-button");
+        const ashokemailButton = document.querySelector("#ashok-email-button");
+        const ashoklinkedinButton = document.querySelector("#ashok-linkedin-button");
+
+        const madhuphoneButton = document.querySelector("#madhu-call-button");
+        const madhuemailButton = document.querySelector("#madhu-email-button");
+        const madhulinkedinButton = document.querySelector("#madhu-linkedin-button");
+
+        var currentItem = 0;
         const showPortfolioItem = (item) => {
           for (let i = 0; i <= 5; i++) {
             document
               .querySelector("#portfolio-item" + i)
               .setAttribute("visible", i === item);
+             
           }
+            if(item==0)
+            {
+                jagaphoneButton.setAttribute("position", "-0.2 1 0.08");
+                jagaemailButton.setAttribute("position", "0 1 0.08");
+                jagalinkedinButton.setAttribute("position", "0.2 1 0.08");
+                ganeshphoneButton.setAttribute("position", "-0.2 -0.13 0.08");
+                ganeshemailButton.setAttribute("position", "0 -0.13 0.08");
+                ganeshlinkedinButton.setAttribute("position", "0.2 -0.13 0.08");
+                mowleephoneButton.setAttribute("position", "-0.2 1 0.08");
+                mowleeemailButton.setAttribute("position", "0 1 0.08");
+                mowleelinkedinButton.setAttribute("position", "0.2 1 0.08");
+                hariphoneButton.setAttribute("position", "-0.2 1 0.08");
+                hariemailButton.setAttribute("position", "0 1 0.08");
+                harilinkedinButton.setAttribute("position", "0.2 1 0.08");
+                ashokphoneButton.setAttribute("position", "-0.2 1 0.08");
+                ashokemailButton.setAttribute("position", "0 1 0.08");
+                ashoklinkedinButton.setAttribute("position", "0.2 1 0.08");
+                madhuphoneButton.setAttribute("position", "-0.2 1 0.08");
+                madhuemailButton.setAttribute("position", "0 1 0.08");
+                madhulinkedinButton.setAttribute("position", "0.2 1 0.08");
+            }
+            if(item==1)
+            {
+              jagaphoneButton.setAttribute("position", "-0.2 -0.13 0.08");
+                jagaemailButton.setAttribute("position", "0 -0.13 0.08");
+                jagalinkedinButton.setAttribute("position", "0.2 -0.13 0.08");
+                ganeshphoneButton.setAttribute("position", "-0.2 1 0.08");
+                ganeshemailButton.setAttribute("position", "0 1 0.08");
+                ganeshlinkedinButton.setAttribute("position", "0.2 1 0.08");
+                mowleephoneButton.setAttribute("position", "-0.2 1 0.08");
+                mowleeemailButton.setAttribute("position", "0 1 0.08");
+                mowleelinkedinButton.setAttribute("position", "0.2 1 0.08");
+                hariphoneButton.setAttribute("position", "-0.2 1 0.08");
+                hariemailButton.setAttribute("position", "0 1 0.08");
+                harilinkedinButton.setAttribute("position", "0.2 1 0.08");
+                ashokphoneButton.setAttribute("position", "-0.2 1 0.08");
+                ashokemailButton.setAttribute("position", "0 1 0.08");
+                ashoklinkedinButton.setAttribute("position", "0.2 1 0.08");
+                madhuphoneButton.setAttribute("position", "-0.2 1 0.08");
+                madhuemailButton.setAttribute("position", "0 1 0.08");
+                madhulinkedinButton.setAttribute("position", "0.2 1 0.08");
+            }
+            if(item==2)
+            {
+              jagaphoneButton.setAttribute("position", "-0.2 1 0.08");
+                jagaemailButton.setAttribute("position", "0 1 0.08");
+                jagalinkedinButton.setAttribute("position", "0.2 1 0.08");
+                ganeshphoneButton.setAttribute("position", "-0.2 1 0.08");
+                ganeshemailButton.setAttribute("position", "0 1 0.08");
+                ganeshlinkedinButton.setAttribute("position", "0.2 1 0.08");
+                mowleephoneButton.setAttribute("position", "-0.2 1 0.08");
+                mowleeemailButton.setAttribute("position", "0 1 0.08");
+                mowleelinkedinButton.setAttribute("position", "0.2 1 0.08");
+                hariphoneButton.setAttribute("position", "-0.2 -0.13 0.08");
+                hariemailButton.setAttribute("position", "0 -0.13 0.08");
+                harilinkedinButton.setAttribute("position", "0.2 -0.13 0.08");
+                ashokphoneButton.setAttribute("position", "-0.2 1 0.08");
+                ashokemailButton.setAttribute("position", "0 1 0.08");
+                ashoklinkedinButton.setAttribute("position", "0.2 1 0.08");
+                madhuphoneButton.setAttribute("position", "-0.2 1 0.08");
+                madhuemailButton.setAttribute("position", "0 1 0.08");
+                madhulinkedinButton.setAttribute("position", "0.2 1 0.08");
+            }
+            if(item==3)
+            {
+              jagaphoneButton.setAttribute("position", "-0.2 1 0.08");
+                jagaemailButton.setAttribute("position", "0 1 0.08");
+                jagalinkedinButton.setAttribute("position", "0.2 1 0.08");
+                ganeshphoneButton.setAttribute("position", "-0.2 1 0.08");
+                ganeshemailButton.setAttribute("position", "0 1 0.08");
+                ganeshlinkedinButton.setAttribute("position", "0.2 1 0.08");
+                mowleephoneButton.setAttribute("position", "-0.2 -0.13 0.08");
+                mowleeemailButton.setAttribute("position", "0 -0.13 0.08");
+                mowleelinkedinButton.setAttribute("position", "0.2 -0.13 0.08");
+                hariphoneButton.setAttribute("position", "-0.2 1 0.08");
+                hariemailButton.setAttribute("position", "0 1 0.08");
+                harilinkedinButton.setAttribute("position", "0.2 1 0.08");
+                ashokphoneButton.setAttribute("position", "-0.2 1 0.08");
+                ashokemailButton.setAttribute("position", "0 1 0.08");
+                ashoklinkedinButton.setAttribute("position", "0.2 1 0.08");
+                madhuphoneButton.setAttribute("position", "-0.2 1 0.08");
+                madhuemailButton.setAttribute("position", "0 1 0.08");
+                madhulinkedinButton.setAttribute("position", "0.2 1 0.08");
+            }
+            if(item==4)
+            {
+              jagaphoneButton.setAttribute("position", "-0.2 1 0.08");
+                jagaemailButton.setAttribute("position", "0 1 0.08");
+                jagalinkedinButton.setAttribute("position", "0.2 1 0.08");
+                ganeshphoneButton.setAttribute("position", "-0.2 1 0.08");
+                ganeshemailButton.setAttribute("position", "0 1 0.08");
+                ganeshlinkedinButton.setAttribute("position", "0.2 1 0.08");
+                mowleephoneButton.setAttribute("position", "-0.2 1 0.08");
+                mowleeemailButton.setAttribute("position", "0 1 0.08");
+                mowleelinkedinButton.setAttribute("position", "0.2 1 0.08");
+                hariphoneButton.setAttribute("position", "-0.2 1 0.08");
+                hariemailButton.setAttribute("position", "0 1 0.08");
+                harilinkedinButton.setAttribute("position", "0.2 1 0.08");
+                ashokphoneButton.setAttribute("position", "-0.2 -0.13 0.08");
+                ashokemailButton.setAttribute("position", "0 -0.13 0.08");
+                ashoklinkedinButton.setAttribute("position", "0.2 -0.13 0.08");
+                madhuphoneButton.setAttribute("position", "-0.2 1 0.08");
+                madhuemailButton.setAttribute("position", "0 1 0.08");
+                madhulinkedinButton.setAttribute("position", "0.2 1 0.08");
+            }
+            if(item==5)
+            {
+              jagaphoneButton.setAttribute("position", "-0.2 1 0.08");
+                jagaemailButton.setAttribute("position", "0 1 0.08");
+                jagalinkedinButton.setAttribute("position", "0.2 1 0.08");
+                ganeshphoneButton.setAttribute("position", "-0.2 1 0.08");
+                ganeshemailButton.setAttribute("position", "0 1 0.08");
+                ganeshlinkedinButton.setAttribute("position", "0.2 1 0.08");
+                mowleephoneButton.setAttribute("position", "-0.2 1 0.08");
+                mowleeemailButton.setAttribute("position", "0 1 0.08");
+                mowleelinkedinButton.setAttribute("position", "0.2 1 0.08");
+                hariphoneButton.setAttribute("position", "-0.2 1 0.08");
+                hariemailButton.setAttribute("position", "0 1 0.08");
+                harilinkedinButton.setAttribute("position", "0.2 1 0.08");
+                ashokphoneButton.setAttribute("position", "-0.2 1 0.08");
+                ashokemailButton.setAttribute("position", "0 1 0.08");
+                ashoklinkedinButton.setAttribute("position", "0.2 1 0.08");
+                madhuphoneButton.setAttribute("position", "-0.2 -0.13 0.08");
+                madhuemailButton.setAttribute("position", "0 -0.13 0.08");
+                madhulinkedinButton.setAttribute("position", "0.2 -0.13 0.08");
+            }
         };
+
+            
+          
         rightButton.addEventListener("click", () => {
           currentItem = (currentItem + 1) % 6;
           showPortfolioItem(currentItem);
@@ -61,6 +216,7 @@
           console.log(currentItem);
         });
 
+        
         let newsItem = 0;
         const showPortfolioNewsItem = (item) => {
           for (let i = 0; i <= 2; i++) {
@@ -99,6 +255,8 @@
           console.log(eventItem);
         });
         
+        
+
         if(menuStatus === false && news === false && event === false){
           logo = true
           console.log(logo, menuStatus, news, event);
@@ -114,6 +272,8 @@
         }
 
         teamButton.addEventListener("click", function (evt) {
+        
+        
           menuStatus = true;
           console.log(logo, menuStatus, news, event);
           if (menuStatus === true && logo === true) {
@@ -1028,63 +1188,8 @@
       });
     </script>
 
-<script>
-  function ganeshPhone() {
-    window.location.href ="tel:+918872887277";
-  }
-  function ganeshMail() {
-    window.location.href ="mailto:grajagopal@monolith.asia?&body=Hello Ganesh,";
-  }
-  function ganeshLinkedin() {
-    window.location.href ="https://www.linkedin.com/in/ganesh-r-82a05293/";
-  }
-  function jagadeeshPhone() {
-    window.location.href ="tel:+918939427788";
-  }
-  function jagadeeshMail() {
-    window.location.href ="mailto:jvinayagam@monolith.asia?&body=Hello Jagadeesh,";
-  }
-  function jagadeeshLinkedin() {
-    window.location.href ="https://www.linkedin.com/in/jagadeesh-v-364b4a16b/";
-  }
-  function hariPhone() {
-    window.location.href ="tel:+918838422393";
-  }
-  function hariMail() {
-    window.location.href ="mailto:hsenthilkumar@monolith.asia?&body=Hello Hariharan,";
-  }
-  function hariLinkedin() {
-    window.location.href ="https://www.linkedin.com/in/hariharan-s-7819b9148/";
-  }
-  function mowleePhone() {
-    window.location.href ="tel:+919791767427";
-  }
-  function mowleeMail() {
-    window.location.href ="mailto:malagesan@monolith.asia?&body=Hello Mowleeswar,";
-  }
-  function mowleeLinkedin() {
-    window.location.href ="https://www.linkedin.com/in/mowleeswar/overlay/contact-info/";
-  }
-  function ashokPhone() {
-    window.location.href ="tel:+919884497879";
-  }
-  function ashokMail() {
-    window.location.href ="mailto:asankaran@monolith.asia?&body=Hello Ashok,";
-  }
-  function ashokLinkedin() {
-    window.location.href ="https://www.linkedin.com/in/ashok-sankaran-abb5a0a7/";
-  }
-  function madhuPhone() {
-    window.location.href ="tel:+919840998841";
-  }
-  function madhuMail() {
-    window.location.href ="mailto:mkamaraj@monolith.asia?&body=Hello Madhumitha,";
-  }
-  function madhuLinkedin() {
-    window.location.href ="https://www.linkedin.com/in/madhumitha-kamaraj-690850204/";
-  }
-</script>
-    <style>
+
+   <style>
       #example-scanning-overlay {
         display: flex;
         align-items: center;
@@ -1658,76 +1763,75 @@
           render-order="layer2"
         >
           
-
           <a-entity id="portfolio-item0" visible = true>
             
-            <a-image
-            src="#layout-icon"
-            position="0 0 0.06"
-            height="0.45"
-            width="0.80"
-            rotation="0 0 0"
-            ></a-image>
+          <a-image
+          src="#layout-icon"
+          position="0 0 0.06"
+          height="0.45"
+          width="0.80"
+          rotation="0 0 0"
+          ></a-image>
+
+          <a-image
+            src="#ganesh-icon"
+            width="0.20"
+            height="0.20"
+            position="-0.28 0.05 0.08"
+          ></a-image>
+
+          <a-text
+            id="username"
+            value="Ganesh Rajagopal"
+            color="white"
+            width="1"
+            position="-0.15 0.10 0.08"
+            material="opacity: 0.5"
+          ></a-text>
+
+          <a-text
+            id="designation"
+            class="clickable"
+            value="AVGC Projects"
+            color="white"
+            width="1"
+            position="-0.15 0 0.08"
+            material="opacity: 0.5"
+          ></a-text>
 
             <a-image
-              src="#ganesh-icon"
-              width="0.20"
-              height="0.20"
-              position="-0.28 0.05 0.08"
-            ></a-image>
+            id="ganesh-call-button"
+            class="clickable"
+            src="#phone-icon"
+            position="-0.2 -0.13 0.08"
+            height="0.12"
+            width="0.12"
+            link="href: tel:+918872887277"
+          ></a-image>
 
-            <a-text
-              id="username"
-              value="Ganesh Rajagopal"
-              color="white"
-              width="1"
-              position="-0.15 0.10 0.08"
-              material="opacity: 0.5"
-            ></a-text>
 
-            <a-text
-              id="designation"
-              class="clickable"
-              value="AVGC Projects"
-              color="white"
-              width="1"
-              position="-0.15 0 0.08"
-              material="opacity: 0.5"
-            ></a-text>
+          <a-image
+            id="ganesh-email-button"
+            class="clickable"
+            src="#mail-icon"
+            position="0 -0.13 0.08"
+            height="0.12"
+            width="0.12"
+            link="href: mailto:grajagopal@monolith.asia?&body=Hello Ganesh,"
+          ></a-image>
 
-              <a-image
-              id="call-button"
-              class="clickable"
-              src="#phone-icon"
-              position="-0.2 -0.13 0.08"
-              height="0.12"
-              width="0.12"
-              onclick="ganeshPhone()"
-            ></a-image>
-  
-  
-            <a-image
-              id="email-button"
-              class="clickable"
-              src="#mail-icon"
-              position="0 -0.13 0.08"
-              height="0.12"
-              width="0.12"
-              onclick="ganeshMail()"
-            ></a-image>
-  
-  
-            <a-image
-              id="linkedin-button"
-              class="clickable"
-              src="#in-icon"
-              position="0.2 -0.13 0.08"
-              height="0.12"
-              width="0.12"
-              onclick="ganeshLinkedin()"
-            ></a-image>
+
+          <a-image
+            id="ganesh-linkedin-button"
+            class="clickable"
+            src="#in-icon"
+            position="0.2 -0.13 0.08"
+            height="0.12"
+            width="0.12"
+            link="href: https://www.linkedin.com/in/ganesh-r-82a05293/"
+          ></a-image>
           </a-entity>
-
+          
           <a-entity id="portfolio-item1" visible = false>
             
             
@@ -1766,35 +1870,35 @@
             ></a-text>
 
             <a-image
-              id="call-button"
+              id="jaga-call-button"
               class="clickable"
               src="#phone-icon"
               position="-0.2 -0.13 0.08"
               height="0.12"
               width="0.12"
-              onclick="jagadeeshPhone()"
+              link="href: tel:+918939427788"
             ></a-image>
   
   
             <a-image
-              id="email-button"
+              id="jaga-email-button"
               class="clickable"
               src="#mail-icon"
               position="0 -0.13 0.08"
               height="0.12"
               width="0.12"
-              onclick="jagadeeshMail()"
+              link="href: mailto:jvinayagam@monolith.asia?&body=Hello Jagadeesh,"
             ></a-image>
   
   
             <a-image
-              id="linkedin-button"
+              id="jaga-linkedin-button"
               class="clickable"
               src="#in-icon"
               position="0.2 -0.13 0.08"
               height="0.12"
               width="0.12"
-              onclick="jagadeeshLinkedin()"
+              link="href: https://www.linkedin.com/in/jagadeesh-v-364b4a16b/"
             ></a-image>
           </a-entity>
 
@@ -1835,35 +1939,35 @@
             ></a-text>
 
               <a-image
-              id="call-button"
+              id="hari-call-button"
               class="clickable"
               src="#phone-icon"
               position="-0.2 -0.13 0.08"
               height="0.12"
               width="0.12"
-              onclick="hariPhone()"
+              link="href: tel:+918838422393"
             ></a-image>
   
   
             <a-image
-              id="email-button"
+              id="hari-email-button"
               class="clickable"
               src="#mail-icon"
               position="0 -0.13 0.08"
               height="0.12"
               width="0.12"
-              onclick="hariMail()"
+              link="href: mailto:hsenthilkumar@monolith.asia?&body=Hello Hariharan,"
             ></a-image>
   
   
             <a-image
-              id="linkedin-button"
+              id="hari-linkedin-button"
               class="clickable"
               src="#in-icon"
               position="0.2 -0.13 0.08"
               height="0.12"
               width="0.12"
-              onclick="hariLinkedin()"
+              link="href: https://www.linkedin.com/in/hariharan-s-7819b9148/"
             ></a-image>
           </a-entity>
 
@@ -1905,35 +2009,35 @@
             ></a-text>
 
             <a-image
-              id="call-button"
+              id="mowlee-call-button"
               class="clickable"
               src="#phone-icon"
               position="-0.2 -0.13 0.08"
               height="0.12"
               width="0.12"
-              onclick="mowleePhone()"
+              link="href: tel:+919791767427"
             ></a-image>
   
   
             <a-image
-              id="email-button"
+              id="mowlee-email-button"
               class="clickable"
               src="#mail-icon"
               position="0 -0.13 0.08"
               height="0.12"
               width="0.12"
-              onclick="mowleeMail()"
+              link="href: mailto:malagesan@monolith.asia?&body=Hello Mowleeswar,"
             ></a-image>
   
   
             <a-image
-              id="linkedin-button"
+              id="mowlee-linkedin-button"
               class="clickable"
               src="#in-icon"
               position="0.2 -0.13 0.08"
               height="0.12"
               width="0.12"
-              onclick="mowleeLinkedin()"
+              link="href: https://www.linkedin.com/in/mowleeswar/overlay/contact-info/"
             ></a-image>
           </a-entity>
 
@@ -1984,35 +2088,35 @@
             ></a-text>
 
               <a-image
-              id="call-button"
+              id="ashok-call-button"
               class="clickable"
               src="#phone-icon"
               position="-0.2 -0.13 0.08"
               height="0.12"
               width="0.12"
-              onclick="ashokPhone()"
+              link="href: tel:+919884497879"
             ></a-image>
   
   
             <a-image
-              id="email-button"
+              id="ashok-email-button"
               class="clickable"
               src="#mail-icon"
               position="0 -0.13 0.08"
               height="0.12"
               width="0.12"
-              onclick="ashokMail()"
+              link="href: mailto:asankaran@monolith.asia?&body=Hello Ashok,"
             ></a-image>
   
   
             <a-image
-              id="linkedin-button"
+              id="ashok-linkedin-button"
               class="clickable"
               src="#in-icon"
               position="0.2 -0.13 0.08"
               height="0.12"
               width="0.12"
-              onclick="ashokLinkedin()"
+              link="href: https://www.linkedin.com/in/ashok-sankaran-abb5a0a7/"
             ></a-image>
           </a-entity>
 
@@ -2054,38 +2158,37 @@
             ></a-text>
 
             <a-image
-              id="call-button"
+              id="madhu-call-button"
               class="clickable"
               src="#phone-icon"
               position="-0.2 -0.13 0.08"
               height="0.12"
               width="0.12"
-              onclick="madhuPhone()"
+              link="href: tel:+919840998841"
             ></a-image>
   
   
             <a-image
-              id="email-button"
+              id="madhu-email-button"
               class="clickable"
               src="#mail-icon"
               position="0 -0.13 0.08"
               height="0.12"
               width="0.12"
-              onclick="madhuMail()"
+              link="href: mailto:mkamaraj@monolith.asia?&body=Hello Madhumitha,"
             ></a-image>
   
   
             <a-image
-              id="linkedin-button"
+              id="madhu-linkedin-button"
               class="clickable"
               src="#in-icon"
               position="0.2 -0.13 0.08"
               height="0.12"
               width="0.12"
-              onclick="madhuLinkedin()"
+              link="href: https://www.linkedin.com/in/madhumitha-kamaraj-690850204/"
             ></a-image>
           </a-entity>
-
           
           <a-image
             visible="false"
